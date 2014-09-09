@@ -47,13 +47,13 @@
 
     var hammertime = new Hammer(document, {});
     hammertime.on('drag', function(ev) {
-        //if(ev.gesture.direction=="down"){
+        if(ev.gesture.direction=="down"){
             console.log(window.scrollY);
             if(window.scrollY == 0){
                 
                 ev.gesture.preventDefault();
             }
-        //}
+        }
     });
     </script>
 </div>
