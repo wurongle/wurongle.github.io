@@ -52,7 +52,8 @@
         var touch = e.touches[0];
         if(touchstartY - touch.pageY < 0 && window.scrollY== 0){
             e.preventDefault();
-            console.log("preventDefault",touchstartY - touch.pageY);  
+            e.stopPropagation();
+            console.log("preventDefault stop",touchstartY - touch.pageY);  
         }
         console.log("touchmove",window.scrollY,touch.pageY);
     })
