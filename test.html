@@ -21,6 +21,7 @@
         height: 80%;
         background:#fff;
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
     .transition{
         -webkit-transition: 0.25s;
@@ -57,7 +58,6 @@
         startScrollTop = this.scrollTop;
     })
     $main.on('touchmove', function(e) {
-        
         var moveY = e.touches[0].pageY - touchstartY - startScrollTop;
         if(this.scrollTop == 0 && moveY > 0){
             $main.removeClass("transition");
@@ -72,6 +72,9 @@
         $banner.addClass("transition");
         $main.css("transform","translate(0,0)");
         $banner.css("transform","translate(0,-20px)");
+    });
+    $(document).on('touchmove', function(e) {
+        e.preventDefault();
     });
     </script>
 </div>
