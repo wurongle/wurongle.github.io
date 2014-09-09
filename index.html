@@ -205,7 +205,10 @@
 			</div>
     	</div>
     	<script>
-    		if(typeof WeixinJSBridge!="undefined"){
+    	
+                    document.addEventListener('WeixinJSBridgeReady', function(){
+                    	
+                    	    		if(typeof WeixinJSBridge!="undefined"){
     alert(1);
     WeixinJSBridge.invoke("getInstallState",{
         packageName:"com.tencent.qt.qtl"
@@ -214,6 +217,10 @@
     });
     alert(2);
 }
+                    }, false);
+
+                
+
     	</script>
     </body>
 </html>
