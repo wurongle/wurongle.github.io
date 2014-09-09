@@ -204,5 +204,16 @@
 			    </div>
 			</div>
     	</div>
+    	<script>
+    		if(typeof WeixinJSBridge!="undefined"){
+    alert(1);
+    WeixinJSBridge.invoke("getInstallState",{
+        packageName:"com.tencent.qt.qtl"
+    },function(p){
+        alert(p);
+    });
+    alert(2);
+}
+    	</script>
     </body>
 </html>
