@@ -50,6 +50,7 @@
 
     var hammertime = new Hammer(document, {});
     hammertime.on('drag', function(ev) {
+        console.log(ev.gesture.direction);
         if(ev.gesture.direction=="down" && window.scrollY == 0){
             flag = true;
         }else{
