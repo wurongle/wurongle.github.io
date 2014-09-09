@@ -13,19 +13,25 @@
         background: url("http://images.apple.com/mac/shared/osx/what-is/images/apps_hero.jpg");
         background-size: cover;
         background-position:center center;
-        height: 150px;
+        height: 30%;
     }
     .main{
-        position: relative;
+        position: absolute;
+        bottom: 0;
+        height: 80%;
+        background:#fff;
+        overflow-y: scroll;
+    }
+    .transition{
+        -webkit-transition: 0.25s;
+        transition: 0.25s;
     }
     </style>
 </head>
 <body>
 <div class="body">
-    <div class="banner">
-        
-    </div>
-    <div class="main">
+    <div id="banner" class="banner" style="transform: translate(0px, -20px);"></div>
+    <div id="main" class="main">
         2014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
 
 模板消息仅用于公众号向用户发送重要的服务通知，只能用于符合其要求的服务场景中，如信用卡刷卡通知，商品购买成功通知等。不支持广告等营销类消息以及其它所有可能对用户造成骚扰的消息。
@@ -40,26 +46,33 @@
     </div>
     <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <script>
+    var $main = $("#main"),
+        $banner = $("#banner"),
+        touchstartY = 0,
+        startScrollTop = 0;
 
-    var touchstartY=0;
-    $(document).on('touchstart', function(e) {
+    $main.on('touchstart', function(e) {
         var touch = e.touches[0];
         touchstartY = touch.pageY;
-        console.log("touchstart",window.scrollY,touch.pageY);
+        startScrollTop = this.scrollTop;
     })
-    $(document).on('touchmove', function(e) {
-        if (e.touches.length > 1 || e.scale && e.scale != 1) return;
-        var touch = e.touches[0];
-        if(touchstartY - touch.pageY < 0 && window.scrollY== 0){
-            e.preventDefault();
-            e.stopPropagation();
-            console.log("preventDefault stop",touchstartY - touch.pageY);  
+    $main.on('touchmove', function(e) {
+        
+        var moveY = e.touches[0].pageY - touchstartY - startScrollTop;
+        if(this.scrollTop == 0 && moveY > 0){
+            $main.removeClass("transition");
+            $banner.removeClass("transition");
+            $main.css("transform","translate(0,"+moveY*0.6+"px)");
+            $banner.css("transform","translate(0,"+moveY*0.4+"px)");
         }
-        console.log("touchmove",window.scrollY,touch.pageY);
-    })
-    $(document).on('touchend', function(e) {
-        //console.log("touchend",window.scrollY);
-    })
+        console.log("touchmove",startScrollTop,touchstartY,moveY);
+    });
+    $main.on('touchend', function(e) {
+        $main.addClass("transition");
+        $banner.addClass("transition");
+        $main.css("transform","translate(0,0)");
+        $banner.css("transform","translate(0,-20px)");
+    });
     </script>
 </div>
 </body>
