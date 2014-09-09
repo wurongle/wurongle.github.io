@@ -66,6 +66,7 @@
             $banner.css("transform","translate(0,"+moveY*0.4+"px)");
         }
         console.log("touchmove",startScrollTop,touchstartY,moveY);
+        e.stopPropagation();
     });
     $main.on('touchend', function(e) {
         $main.addClass("transition");
