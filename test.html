@@ -52,7 +52,7 @@
         touchstartY = 0,
         startScrollTop = 0;
 
-    $main.on('touchstart', function(e) {
+    /*$main.on('touchstart', function(e) {
         var touch = e.touches[0];
         touchstartY = touch.pageY;
         startScrollTop = this.scrollTop;
@@ -76,8 +76,24 @@
         $banner.css("transform","translate(0,-20px)");
     });
     $(document).on('touchmove', function(e) {
-        //e.preventDefault();
-    });
+        e.preventDefault();
+    });*/
+    var elementYouWantToScroll = $("#main");
+    document.ontouchmove = function(e) {
+        var target = e.currentTarget;
+        while(target) {
+            if(checkIfElementShouldScroll(target))
+                return;
+            target = target.parentNode;
+        }
+        e.preventDefault();
+    };
+    elementYouWantToScroll.ontouchmove = function(e) {
+        e.stopPropagation();
+    };
+    function checkIfElementShouldScroll(el){
+        return el == elementYouWantToScroll[0];
+    }
     </script>
 </div>
 </body>
