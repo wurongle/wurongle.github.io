@@ -33,7 +33,7 @@
 <div class="body">
     <div id="banner" class="banner" style="transform: translate(0px, -20px);"></div>
     <div id="main" class="main">
-        2014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
+        1111111111111111111111111112014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
 
 模板消息仅用于公众号向用户发送重要的服务通知，只能用于符合其要求的服务场景中，如信用卡刷卡通知，商品购买成功通知等。不支持广告等营销类消息以及其它所有可能对用户造成骚扰的消息。
 
@@ -67,6 +67,7 @@
         }
         console.log("touchmove",startScrollTop,touchstartY,moveY);
         e.stopPropagation();
+        e.stopImmediatePropagation(); 
     });
     $main.on('touchend', function(e) {
         $main.addClass("transition");
@@ -75,7 +76,7 @@
         $banner.css("transform","translate(0,-20px)");
     });
     $(document).on('touchmove', function(e) {
-        e.preventDefault();
+        //e.preventDefault();
     });
     </script>
 </div>
