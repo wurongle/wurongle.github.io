@@ -32,7 +32,7 @@
 <body>
 <div class="body">
     <div id="banner" class="banner" style="transform: translate(0px, -20px);"></div>
-    <div id="main" class="main">
+    <div id="main" class="main nonbounce">
         222222222014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
 
 模板消息仅用于公众号向用户发送重要的服务通知，只能用于符合其要求的服务场景中，如信用卡刷卡通知，商品购买成功通知等。不支持广告等营销类消息以及其它所有可能对用户造成骚扰的消息。
@@ -78,7 +78,93 @@
     $(document).on('touchmove', function(e) {
         e.preventDefault();
     });*/
-    var elementYouWantToScroll = $("#main")[0];
+    (function($){
+    "use strict";
+
+    var startY;
+    
+    var defaults = {
+        "$these": [],
+        "touchstartInit": false,
+        "touchmoveInit": false
+    };
+    
+    $(".nonbounce").each(function() {
+        defaults.$these.push($(this));
+    });
+    
+    var initTouchHandling = function() {
+        if (!defaults.touchstartInit) {
+            defaults.touchstartInit = true;
+            $(window).on("touchstart", touchstart);
+        }
+        
+        if (!defaults.touchmoveInit) {
+            defaults.touchmoveInit = true;
+            $(window).on("touchmove", touchmove);
+        }
+    };
+    
+    var compareElem = function($elem, i, target) {
+        return !!$(target).closest($elem).length;
+    };
+    
+    var hasCorrectBounds = function(evt) {
+        var y = (evt.originalEvent.touches) ? evt.originalEvent.touches[0].screenY : evt.originalEvent.screenY;
+        var nonbounce = $(evt.target).closest(".nonbounce")[0];
+        
+        if (!nonbounce) {
+            return true;
+        }
+        
+        // Prevents scrolling of content to top
+        if (nonbounce.scrollTop === 0 && startY <= y) {
+            return false;
+        }
+        
+        // Prevents scrolling of content to bottom
+        if (nonbounce.scrollHeight-nonbounce.offsetHeight === nonbounce.scrollTop && startY >= y) {
+            return false;
+        }
+        
+        return true;
+    };
+    
+    var touchstart = function(evt) {
+        evt = evt.originalEvent || evt;
+        startY = (evt.touches) ? evt.touches[0].screenY : evt.screenY;
+    };
+    
+    var touchmove = function(evt) {
+        if (!(evt.originalEvent.touches && evt.originalEvent.touches.length > 1)) {
+            // Prevents scrolling of all but the nonbounce elements
+            if (!~$.inArray(true, $.map(defaults.$these, compareElem, evt.target))) {
+                evt.preventDefault();
+            }
+            
+            // Prevents scrolling of nonbounce element if bound conditions are met
+            if (!hasCorrectBounds(evt)) {
+                evt.preventDefault();
+            }
+        }
+
+    };
+
+    $.fn.nonbounce = function() {
+        initTouchHandling();
+        
+        return this.each(function() {
+          defaults.$these.push($(this));
+        });
+    };
+
+    $.nonbounce = function() {
+        initTouchHandling();
+    }
+})(Zepto);
+$.nonbounce();
+
+   /* var elementYouWantToScroll = $("#main")[0];
     document.ontouchmove = function(e) {
         var target = e.currentTarget;
         while(target) {
@@ -93,7 +179,7 @@
     };
     function checkIfElementShouldScroll(el){
         return el == elementYouWantToScroll;
-    }
+    }*/
     </script>
 </div>
 </body>
