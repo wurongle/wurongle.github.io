@@ -1,140 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <title>test</title>
+    <style type="text/css">
+    html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.6;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:16px}body,h1,h2,h3,h4,h5,p,ul,ol,dl,dd,fieldset,textarea{margin:0}fieldset,legend,textarea,input,button{padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;*font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}ul,ol{padding-left:0;list-style-type:none;list-style-position:inside}a img,fieldset{border:0}a{text-decoration:none}
 
-<html class=" overthrow-enabled"><head>
-        <meta charset="utf-8">
-        <title>Nonbounce</title>
+    html,body{height:100%;}
+    .body{height:100%;}
+    .banner{
+        background: url("http://images.apple.com/mac/shared/osx/what-is/images/apps_hero.jpg");
+        background-size: cover;
+        background-position:center center;
+        height: 30%;
+    }
+    .main{
+        position: absolute;
+        bottom: 0;
+        height: 80%;
+        background:#fff;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    .transition{
+        -webkit-transition: 0.25s;
+        transition: 0.25s;
+    }
+    </style>
+</head>
+<body>
+<div class="body">
+    <div id="banner" class="banner" style="transform: translate(0px, -20px);"></div>
+    <div id="main" class="main container nonbounce">
+        2014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
 
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="768">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="cleartype" content="on">
-        <style type="text/css">
-            * {
-                box-sizing:border-box;
-                -webkit-text-size-adjust:100%;
-                text-rendering:optimizeLegibility;
-                -webkit-font-smoothing:antialiased; 
-            }
-            html, body {
-                margin:0px;
-                padding:0px;
-                font:normal 100% "Palatino Linotype", georgia, serif;
-            }
-            
-            a {
-                display:block;
-                float:left;
-                background-color:#B0B0B0;
-                color:#F0F0F0;
-                padding:2px 5px;
-                margin:20px 0px;
-                border:1px solid #202020;
-            }
+模板消息仅用于公众号向用户发送重要的服务通知，只能用于符合其要求的服务场景中，如信用卡刷卡通知，商品购买成功通知等。不支持广告等营销类消息以及其它所有可能对用户造成骚扰的消息。
 
-            a:hover {
-                background-color:#C0C0C0;
-                color:#FFFFFF;
-                border:1px solid #808080;
-            }
+ 2014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
 
-            em {
-                background-color:#FFFFFF;
-                border:1px solid #D0D0D0;
-                padding:1px 3px;
-            }
-            
-            #example {
-                position:absolute;
-                left:0px;
-                top:0px;
-                right:0px;
-                bottom:0px;
-                padding:20px;
-                background-color:#E0E0E0;
-            }
-           
-           .container {
-                float:left;
-                background-color:#EEEEEE;
-                width:40%;
-                height:80%;
-                padding:10px;
-                margin-right:5%;
-                overflow:scroll;
-                -webkit-overflow-scrolling:touch;
-            }
-            
-            #example h1 {
-                width:800px;
-                margin:0px;
-                padding:5px 20px;
-                display:block;
-            }
-            
-            #example h1:nth-child(odd) {
-                background-color:#FFFFFF;
-            }
-        </style>
-    <body>
-        <div id="example">
-            <div class="container nonbounce">
-                <h1>mainnonbounce.js v0.1</h1>
-                <p>This is small jQuery plugin, which prevents elastic bounce scrolling in iOS Mobile Safari.</p>
-                <p>Last update has been made on 18th of April, 2013.</p>
-                <h2>Usage</h2>
-                <p>Nonbounce.js can be applied by adding class name <em>"nonbounce"</em> to desired elements and then apply:</p>
-                <p><em>$.nonbounce();</em></p>
-                <h2>Beware!</h2>
-                <p>This snippet disables all the scrolling events from other elements (including document). So use wisely.</p>
-                <h2>Known issues</h2>
-                <ul>
-                    <li>Freezes all the other activities from scrolling</li>
-                    <li><s>Disables the zooming</s></li>
-                </ul>
-                <h2>Future plans</h2>
-                <p>The plans are to a) add this to GitHub, b) refactor code, c) clear out known issues, d) make this compatible with jQuery Mobile.</p>
-            </div>
-            <div id="main" class="container nonbounce">
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-                <h1>Test</h1>
-            </div>
-       </div>
-        <script>
-        var elementYouWantToScroll = document.getElementById("main");
-        document.ontouchmove = function(e) {
-            var target = e.currentTarget;
-            while(target) {
-                if(checkIfElementShouldScroll(target))
-                    return;
-                target = target.parentNode;
-            }
-        
-            e.preventDefault();
-        };
-        elementYouWantToScroll.ontouchmove = function(e) {
-            e.stopPropagation();
-        };
-        function checkIfElementShouldScroll(el){
-                return el == elementYouWantToScroll
-        }
-        </script>
-    </body>
+模板消息仅用于公众号向用户发送重要的服务通知，只能用于符合其要求的服务场景中，如信用卡刷卡通知，商品购买成功通知等。不支持广告等营销类消息以及其它所有可能对用户造成骚扰的消息。
+
+ 2014年08月14日微信团队向具有支付权限的公众号开放了模板消息，使用效果良好，现扩大模板消息开放范围，向认证后的服务号进行开放。所有服务号都可以在功能->添加功能插件处看到申请模板消息功能的入口，但只有认证后的服务号才可以申请模板消息的使用权限并获得该权限。
+
+模板消息仅用于公众号向用户发送重要的服务通知，只能用于符合其要求的服务场景中，如信用卡刷卡通知，商品购买成功通知等。不支持广告等营销类消息以及其它所有可能对用户造成骚扰的消息。
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://www.hakoniemi.net/labs/nonbounce/nonbounce.js"></script>
+    <script>
+$.nonbounce();
+    </script>
+</div>
+</body>
 </html>
