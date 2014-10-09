@@ -205,22 +205,7 @@
 			</div>
     	</div>
     	<script>
-    	
-                    document.addEventListener('WeixinJSBridgeReady', function(){
-                    	
-                    	    		if(typeof WeixinJSBridge!="undefined"){
-    alert(1);
-    WeixinJSBridge.invoke("getInstallState",{
-        packageName:"com.tencent.qt.qtl"
-    },function(p){
-        alert(p);
-    });
-    alert(2);
-}
-                    }, false);
-
-                
-
+    	window.onbeforeunload = function(){     return "真的离开?"; }
     	</script>
     </body>
 </html>
