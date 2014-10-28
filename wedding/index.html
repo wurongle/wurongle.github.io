@@ -11,8 +11,9 @@
 		height:100%;
 		font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","微软雅黑","黑体",Arial,sans-serif;
 	}
-	body{background:#816b9f url(bg.jpg) no-repeat; background-size:cover;}
-	.main{text-align:center;color:#fff;background:rgba(255,255,255,0.2);margin:20px;padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;}
+	body{background:#816b9f url(bg.jpg) no-repeat; background-size:cover;box-sizing: border-box;
+padding: 20px;}
+	.main{text-align:center;color:#fff;background:rgba(255,255,255,0.2);padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;}
 	.main h2{font-weight:normal;font-size:30px;margin-top:10px}
 	.main .time{}
 	.main .location{margin:70px 0 10px;}
@@ -65,9 +66,7 @@
 		</p>
 	</div>
 	<script type="text/javascript">
-	document.ontouchmove = function (){
-		e.preventDefault();
-	}
+	document.ontouchmove = function(e){e.preventDefault();}
 	</script>
 </body>
 </html>
