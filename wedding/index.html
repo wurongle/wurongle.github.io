@@ -3,15 +3,66 @@
 <head>
 	<meta charset="UTF-8">
 	<title>wedding</title>
-
+	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<style type="text/css">
 	*{margin:0;padding:0;}
+	html,body{
+		height:100%;
+		font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","微软雅黑","黑体",Arial,sans-serif;
+	}
+	body{background:#816b9f url(bg.jpg) no-repeat; background-size:cover;}
+	.main{text-align:center;color:#fff;background:rgba(255,255,255,0.3);margin:20px;padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;}
+	.main h2{font-weight:normal;font-size:30px;margin-top:10px}
+	.main .time{}
+	.main .location{margin:70px 0 10px;}
+	.main .phone{}
+	.avtor{width:100px;height:100px;border-radius:100px;border:5px solid #fff;}
+	.icon{display:inline-block;width:20px;height:20px;background-size:20px;background-repeat:no-repeat;vertical-align:-4px;}
+	.icon_love{background-image:url(love.png);}
+	.icon_location{background-image: url(location.png);}
+	.icon_phone{background-image: url(phone.png);width:16px;height:16px;background-size:16px;vertical-align:-2px;}
+
+.animated {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
 	</style>
 </head>
 <body>
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
-	<div style="background:black">
-	
+	<div class="main animated fadeIn">
+		<img class="avtor" src="avtor.jpg">
+		<h2>我们结婚啦！</h2>
+		<p class="time">
+			<i class="icon icon_love"></i>
+			2014.11.27 5:30PM
+		</p>
+		<p class="location">
+			<i class="icon icon_location"></i>
+			<br>
+			广东省台山市公益镇恒益酒店
+		</p>
+		<p class="phone">
+			<i class="icon icon_phone"></i>
+			18502074765
+		</p>
 	</div>
+	
 </body>
 </html>
