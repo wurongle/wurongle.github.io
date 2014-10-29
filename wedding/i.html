@@ -88,12 +88,13 @@ padding: 20px;}
 	$main.ontouchmove = function (e) {
 		if(isScrollVertical) return;
 		var touch = e.touches[0];
-        if(Math.abs(touch.pageY - startDelta.y) < Math.abs(touch.pageX - startDelta.x)){
+		var offset = touch.pageY - startDelta.y;
+        if(Math.abs(offset) < Math.abs(touch.pageX - startDelta.x)){
             isScrollVertical = true;
             return;
         }
         $main.className = $main.className.replace('animated','');
-        $main.style.webkitTransform = "translateY("+touch.pageY - startDelta.y+"px)";
+        $main.style.webkitTransform = "translateY("+offset+"px)";
         e.preventDefault();
 	};
 	$main.ontouchend = function (e) {
