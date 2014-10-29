@@ -93,11 +93,11 @@ padding: 20px;}
             return;
         }
         $main.className = $main.className.replace('animated','');
-        $main.style.transform = "translateY("+touch.pageY - startDelta.y+"px)";
+        $main.style.webkitTransform = "translateY("+touch.pageY - startDelta.y+"px)";
         e.preventDefault();
 	};
 	$main.ontouchend = function (e) {
-		$main.style.transform = "translateY(0px)";
+		$main.style.webkitTransform = "translateY(0px)";
 		$main.className += ' animated';
 	};
 	function loadImage(url, callback) { 
