@@ -205,7 +205,7 @@ padding: 20px;}
 		}
 		me.className += ' animated flipInY';
 		setTimeout(function (argument) {
-			me.className += me.className.replace('animated flipInY','');
+			me.className = me.className.replace('animated flipInY','');
 		},1000);
 	}
 	loadImage('bg.jpg',function (img) {

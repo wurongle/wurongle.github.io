@@ -2,15 +2,226 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>wedding</title>
+	<title>婚宴邀约</title>
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta content="telephone=no" name="format-detection" />
 	<style type="text/css">
 	*{margin:0;padding:0;}
+	html,body{
+		height:100%;
+		font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+	}
+	body{background:#7e51b9;background-repeat:no-repeat; -webkit-background-size:cover;background-size:cover;-webkit-box-sizing: border-box;box-sizing: border-box;
+padding: 20px;}
+	.main{height:430px;width:100%;left:0;top:50%;margin-top:-215px;position:absolute;-webkit-box-sizing: border-box;box-sizing: border-box;}
+	.main .inner{text-align:center;color:#fff;background:rgba(255,255,255,0.2);padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;width:80%;margin:0 auto;}
+	.main h2{font-weight:normal;font-size:30px;margin-top:10px}
+	.main .time{}
+	.main .location{margin:70px 0 10px;}
+	.main .phone{}
+	.avatar{width:100px;height:100px;border-radius:100px;border:5px solid #fff;}
+	.icon{display:inline-block;width:20px;height:20px;-webkit-background-size:20px;background-size:20px;background-repeat:no-repeat;vertical-align:-4px;}
+	.icon_love{background-image:url(love.png);}
+	.icon_location{background-image: url(location.png);}
+	.icon_phone{background-image: url(phone.png);width:16px;height:16px;background-size:16px;vertical-align:-2px;}
+	.loading{position:absolute;width:100%;top: 0;bottom: 0;left: 0;background:#fff url(loading.gif) no-repeat center center;-webkit-background-size:16px;background-size:16px;}
+
+.animating {
+	-webkit-transition: all .5s;
+}
+.animated {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+}
+@-webkit-keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        opacity: 0
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg)
+    }
+
+    100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px)
+    }
+}
+
+@keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -ms-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        opacity: 0
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -ms-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        -ms-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        -ms-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg)
+    }
+
+    100% {
+        -webkit-transform: perspective(400px);
+        -ms-transform: perspective(400px);
+        transform: perspective(400px)
+    }
+}
+
+.flipInY {
+    -webkit-backface-visibility: visible !important;
+    -ms-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    -webkit-animation-name: flipInY;
+    animation-name: flipInY
+}
 	</style>
 </head>
 <body>
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
+	<div id="main" class="main">
+		<div class="inner">
+			<img id="avatar" class="avatar" onclick="changeAvatar(this)">
+			<h2>我们结婚啦！</h2>
+			<p class="time">
+				<i class="icon icon_love"></i>
+				2014.11.26 11:30AM
+			</p>
+			<p class="location">
+				<i class="icon icon_location"></i>
+				<br>
+				广东省吴川市兰石镇
+			</p>
+			<p class="phone">
+				<i class="icon icon_phone"></i>
+				18502074765
+			</p>
+		</div>
+	</div>
+	<div id="loading" class="loading"></div>
+	<script type="text/javascript">
+	document.ontouchmove = function(e){e.preventDefault();}
 
+	var $main = document.getElementById('main'),
+		delta = {},
+		startDelta = {},
+		isScrollX = false,
+		avatar1 = '',
+		avatar2 = '';
+
+	$main.ontouchstart = function (e) {
+		isScrollX = false;
+		if (e.touches.length > 1 || e.scale && e.scale != 1) return;
+
+        var touch = e.touches[0];
+        startDelta = { x: touch.pageX, y: touch.pageY, time: +new Date };
+	};
+	$main.ontouchmove = function (e) {
+		if(isScrollX) return;
+		var touch = e.touches[0];
+		var offset = touch.pageY - startDelta.y;
+        if(Math.abs(offset) < Math.abs(touch.pageX - startDelta.x)){
+            isScrollX = true;
+            return;
+        }
+        $main.className = $main.className.replace('animating','');
+        $main.style.webkitTransform = "translateY("+(offset*0.6)+"px)";
+        e.preventDefault();
+	};
+	$main.ontouchend = function (e) {
+		$main.style.webkitTransform = "translateY(0px)";
+		$main.className += ' animating';
+		isScrollX = false;
+	};
+	function loadImage(url, callback) { 
+		var img = new Image();
+		img.src = url; 
+		if (img.complete) {
+			callback(img); 
+			return;
+		} 
+		img.onload = function () {
+			callback(img);
+		}; 
+	}
+	function changeAvatar (target) {
+		var me = target;
+		if(me.src == avatar1){
+			me.src = avatar2;
+		}else{
+			me.src = avatar1;
+		}
+		me.className += ' animated flipInY';
+		setTimeout(function (argument) {
+			me.className = me.className.replace('animated flipInY','');
+		},1000);
+	}
+	loadImage('bg.jpg',function (img) {
+		document.getElementsByTagName('body')[0].style.backgroundImage = 'url('+img.src+')'
+		loadImage('avatar.jpg',function (_img) {
+			avatar1 = _img.src;
+			document.getElementById('avatar').src = _img.src;
+			document.getElementById('loading').style.display = 'none';
+			document.getElementById('main').className += ' animated fadeIn'; 
+		});
+		loadImage('avatar2.jpg',function (_img) {
+			avatar2 = _img.src;
+		});
+	});
+
+
+	</script>
 </body>
 </html>
