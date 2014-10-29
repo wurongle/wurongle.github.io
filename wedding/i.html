@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>wedding</title>
+	<title>婚宴邀约</title>
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta content="telephone=no" name="format-detection" />
 	<style type="text/css">
 	*{margin:0;padding:0;}
 	html,body{
 		height:100%;
-		font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","微软雅黑","黑体",Arial,sans-serif;
+		font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
 	}
-	body{background:#816b9f url(bg.jpg) no-repeat; background-size:cover;box-sizing: border-box;
+	body{background:#7e51b9;background-repeat:no-repeat; -webkit-background-size:cover;background-size:cover;box-sizing: border-box;
 padding: 20px;}
 	.main{text-align:center;color:#fff;background:rgba(255,255,255,0.2);padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;}
 	.main h2{font-weight:normal;font-size:30px;margin-top:10px}
@@ -19,10 +19,11 @@ padding: 20px;}
 	.main .location{margin:70px 0 10px;}
 	.main .phone{}
 	.avatar{width:100px;height:100px;border-radius:100px;border:5px solid #fff;}
-	.icon{display:inline-block;width:20px;height:20px;background-size:20px;background-repeat:no-repeat;vertical-align:-4px;}
+	.icon{display:inline-block;width:20px;height:20px;-webkit-background-size:20px;background-size:20px;background-repeat:no-repeat;vertical-align:-4px;}
 	.icon_love{background-image:url(love.png);}
 	.icon_location{background-image: url(location.png);}
 	.icon_phone{background-image: url(phone.png);width:16px;height:16px;background-size:16px;vertical-align:-2px;}
+	.loading{position:absolute;width:100%;top: 0;bottom: 0;left: 0;background:#fff url(loading.gif) no-repeat center center;-webkit-background-size:16px;background-size:16px;}
 
 .animated {
   -webkit-animation-duration: 2s;
@@ -49,7 +50,7 @@ padding: 20px;}
 <body>
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
 	<div class="main animated fadeIn">
-		<img class="avatar" src="avatar.jpg">
+		<img id="avatar" class="avatar">
 		<h2>我们结婚啦！</h2>
 		<p class="time">
 			<i class="icon icon_love"></i>
@@ -65,8 +66,27 @@ padding: 20px;}
 			18502074765
 		</p>
 	</div>
+	<div id="loading" class="loading"></div>
 	<script type="text/javascript">
 	document.ontouchmove = function(e){e.preventDefault();}
+	function loadImage(url, callback) { 
+		var img = new Image();
+		img.src = url; 
+		if (img.complete) {
+			callback(img); 
+			return;
+		} 
+		img.onload = function () {
+			callback(img);
+		}; 
+	}
+	loadImage('bg.jpg',function (img) {
+		document.getElementsByTagName('body')[0].style.backgroundImage = 'url('+img.src+')'
+		loadImage('avatar.jpg',function (_img) {
+			document.getElementById('avatar').src = _img.src;
+			document.getElementById('loading').style.display = 'none';
+		});
+	});
 	</script>
 </body>
 </html>
