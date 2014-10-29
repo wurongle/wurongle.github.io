@@ -197,13 +197,13 @@ padding: 20px;}
 		}; 
 	}
 	function changeAvatar (e) {
-		var me = this;
-		if(this.src == avatar1){
-			this.src = avatar2;
+		var me = e.target;
+		if(me.src == avatar1){
+			me.src = avatar2;
 		}else{
-			this.src = avatar1;
+			me.src = avatar1;
 		}
-		this.style.className += 'animated flipInY';
+		me.style.className += 'animated flipInY';
 		setTimeout(function (argument) {
 			me.style.className += me.style.className.replace('animated flipInY','');
 		},1000);
