@@ -133,7 +133,7 @@ padding: 20px;}
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
 	<div id="main" class="main">
 		<div class="inner">
-			<img id="avatar" class="avatar" onclick="changeAvatar()">
+			<img id="avatar" class="avatar" onclick="changeAvatar(this)">
 			<h2>我们结婚啦！</h2>
 			<p class="time">
 				<i class="icon icon_love"></i>
@@ -196,8 +196,8 @@ padding: 20px;}
 			callback(img);
 		}; 
 	}
-	function changeAvatar (e) {
-		var me = e.target;
+	function changeAvatar (target) {
+		var me = target;
 		if(me.src == avatar1){
 			me.src = avatar2;
 		}else{
