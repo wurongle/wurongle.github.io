@@ -203,9 +203,9 @@ padding: 20px;}
 		}else{
 			me.src = avatar1;
 		}
-		me.style.className += 'animated flipInY';
+		me.className += 'animated flipInY';
 		setTimeout(function (argument) {
-			me.style.className += me.style.className.replace('animated flipInY','');
+			me.className += me.className.replace('animated flipInY','');
 		},1000);
 	}
 	loadImage('bg.jpg',function (img) {
