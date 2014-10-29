@@ -26,6 +26,9 @@ padding: 20px;}
 	.icon_phone{background-image: url(phone.png);width:16px;height:16px;background-size:16px;vertical-align:-2px;}
 	.loading{position:absolute;width:100%;top: 0;bottom: 0;left: 0;background:#fff url(loading.gif) no-repeat center center;-webkit-background-size:16px;background-size:16px;}
 
+.animating {
+	-webkit-transition: all .5s;
+}
 .animated {
   -webkit-animation-duration: 2s;
           animation-duration: 2s;
@@ -93,13 +96,13 @@ padding: 20px;}
             isScrollVertical = true;
             return;
         }
-        $main.className = $main.className.replace('animated','');
-        $main.style.webkitTransform = "translateY("+offset+"px)";
+        $main.className = $main.className.replace('animating','');
+        $main.style.webkitTransform = "translateY("+(offset*0.4)+"px)";
         e.preventDefault();
 	};
 	$main.ontouchend = function (e) {
 		$main.style.webkitTransform = "translateY(0px)";
-		$main.className += ' animated';
+		$main.className += ' animating';
 	};
 	function loadImage(url, callback) { 
 		var img = new Image();
