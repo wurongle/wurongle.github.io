@@ -11,9 +11,10 @@
 		height:100%;
 		font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
 	}
-	body{background:#7e51b9;background-repeat:no-repeat; -webkit-background-size:cover;background-size:cover;box-sizing: border-box;
+	body{background:#7e51b9;background-repeat:no-repeat; -webkit-background-size:cover;background-size:cover;-webkit-box-sizing: border-box;box-sizing: border-box;
 padding: 20px;}
-	.main{text-align:center;color:#fff;background:rgba(255,255,255,0.2);padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;}
+	.main{height:430px;width:100%;left:0;top:50%;margin-top:-215px;position:absolute;-webkit-box-sizing: border-box;box-sizing: border-box;}
+	.main .inner{text-align:center;color:#fff;background:rgba(255,255,255,0.2);padding:50px 20px;border-radius:10px;text-shadow: 1px 1px 9px #6C6C6C;width:80%;margin:0 auto;}
 	.main h2{font-weight:normal;font-size:30px;margin-top:10px}
 	.main .time{}
 	.main .location{margin:70px 0 10px;}
@@ -49,26 +50,38 @@ padding: 20px;}
 </head>
 <body>
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
-	<div class="main animated fadeIn">
-		<img id="avatar" class="avatar">
-		<h2>我们结婚啦！</h2>
-		<p class="time">
-			<i class="icon icon_love"></i>
-			2014.11.27 5:30PM
-		</p>
-		<p class="location">
-			<i class="icon icon_location"></i>
-			<br>
-			广东省台山市公益镇恒益酒店
-		</p>
-		<p class="phone">
-			<i class="icon icon_phone"></i>
-			18502074765
-		</p>
+	<div id="main" class="main">
+		<div class="inner">
+			<img id="avatar" class="avatar">
+			<h2>我们结婚啦！</h2>
+			<p class="time">
+				<i class="icon icon_love"></i>
+				2014.11.27 5:30PM
+			</p>
+			<p class="location">
+				<i class="icon icon_location"></i>
+				<br>
+				广东省台山市公益镇恒益酒店
+			</p>
+			<p class="phone">
+				<i class="icon icon_phone"></i>
+				18502074765
+			</p>
+		</div>
 	</div>
 	<div id="loading" class="loading"></div>
 	<script type="text/javascript">
 	document.ontouchmove = function(e){e.preventDefault();}
+	var $main = document.getElementById('main');
+	$main.ontouchstart = function (e) {
+		// body...
+	};
+	$main.ontouchmove = function (e) {
+		console.log(e);
+	};
+	$main.ontouchend = function (e) {
+		// body...
+	};
 	function loadImage(url, callback) { 
 		var img = new Image();
 		img.src = url; 
@@ -85,8 +98,11 @@ padding: 20px;}
 		loadImage('avatar.jpg',function (_img) {
 			document.getElementById('avatar').src = _img.src;
 			document.getElementById('loading').style.display = 'none';
+			document.getElementById('main').className += ' animated fadeIn'; 
 		});
 	});
+
+
 	</script>
 </body>
 </html>
