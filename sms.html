@@ -1,7 +1,46 @@
-If you want it to work on Android you need to use this format:
-
-<a href="sms:18502074765?body=hello">Android Link</a>
-
-If you want it to work on iOS, you need this:
-
-<a href="sms:18502074765;body=hello">IOS Link</a>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	</head>
+	<body>
+		<p>
+			<a href="sms:5552345678">Phone only</a>
+		</p>
+		<p>
+			<a href="sms:+15552345678">Phone(+1) only</a>
+		</p>
+		<p>
+			<a href="sms:?body=Hello,%20world">Body only</a>
+		</p>
+		<p>
+			<a href="sms:;body=Hello,%20world">;body only</a>
+		</p>
+		<p>
+			<a href="sms:5552345678?body=Hello%20World">Phone and ?body</a>
+		</p>
+		<p>
+			<a href="sms:+15552345678?body=Hello%20World">Phone(+1) and ?body</a>
+		</p>
+		<p>
+			<a href="sms:5552345678;body=Hello%20World">Phone(+1) and ;body</a>
+		</p>
+		<p>
+			<a href="sms://5552345678">Phone only (sms://)</a>
+		</p>
+		<p>
+			<a href="sms://+15552345678">Phone(+1) only (sms://)</a>
+		</p>
+		<p>
+			<a href="sms://5552345678?body=Hello,%20World">Phone and ?body (sms://)</a>
+		</p>
+		<p>
+			<a href="sms://+15552345678?body=Hello,%20World">Phone(+1) and ?body (sms://)</a>
+		</p>
+		<p>
+			<a href="sms://5552345678;body=Hello,%20World">Phone and ;body (sms://)</a>
+		</p>
+		<p>
+			<a href="sms://+15552345678;body=Hello,%20World">Phone(+1) and ;body (sms://)</a>
+		</p>
+	</body>
+</html>
