@@ -11,6 +11,7 @@
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
 	<div id="main" class="main">
 		<div class="inner">
+			<div id="uname" class="uname">伍荣乐 <i class="icon icon_love"></i> 杨华莲</div>
 			<div id="avatar_wrp" class="avatar_wrp">
 				<img id="avatar" class="avatar" onclick="changeAvatar(this)">
 			</div>
@@ -37,6 +38,7 @@
 	document.ontouchmove = function(e){e.preventDefault();}
 
 	var $main = document.getElementById('main'),
+		$uname = document.getElementById('uname'),
 		delta = {},
 		startDelta = {},
 		isScrollX = false,
@@ -60,10 +62,14 @@
         }
         $main.className = $main.className.replace('animating','');
         $main.style.webkitTransform = "translateY("+(offset*0.6)+"px)";
+        $uname.style.opacity = Math.min(offset/200,1);
+        $uname.className = $uname.className.replace('animating','');
         e.preventDefault();
 	};
 	$main.ontouchend = function (e) {
 		$main.style.webkitTransform = "translateY(0px)";
+		$uname.style.opacity = 0;
+		$uname.className += ' animating';
 		$main.className += ' animating';
 		isScrollX = false;
 	};
@@ -89,11 +95,6 @@
 		setTimeout(function (argument) {
 			me.className = me.className.replace('animated flipInY','');
 		},1000);
-		var $avatar_wrp = document.getElementById('avatar_wrp');
-		$avatar_wrp.className = $avatar_wrp.className.replace('show','') + ' show';
-		setTimeout(function (argument) {
-			$avatar_wrp.className = $avatar_wrp.className.replace('show','');
-		},2000);
 	}
 	loadImage('bg.jpg',function (img) {
 		document.getElementsByTagName('body')[0].style.backgroundImage = 'url('+img.src+')'
