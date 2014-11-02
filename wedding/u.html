@@ -115,8 +115,8 @@
 		});
 	});
 	function onBridgeReady(){
-		//WeixinJSBridge.call('hideOptionMenu');
-		//WeixinJSBridge.call("hideToolbar");
+		WeixinJSBridge.call('hideOptionMenu');
+		WeixinJSBridge.call("hideToolbar");
 		WeixinJSBridge.on('menu:share:appmessage' , function(argv){
 			WeixinJSBridge.invoke('sendAppMessage',{
 			"img_url": "http://wurongle.github.io/wedding/avatar2.jpg",
