@@ -118,13 +118,14 @@
 		WeixinJSBridge.call('hideOptionMenu');
 		WeixinJSBridge.call("hideToolbar");
 		WeixinJSBridge.on('menu:share:appmessage' , function(argv){
-		WeixinJSBridge.invoke('sendAppMessage',{
-		"img_url": "http://wurongle.github.io/wedding/avatar2.jpg",
-		"img_width": "108",
-		"img_height": "108",
-		"desc": "吴川市兰石镇开发区，2014年11月26日上午11点",
-		"title": "[婚宴邀约]伍荣乐&杨华莲"
-		},function(res){});
+			WeixinJSBridge.invoke('sendAppMessage',{
+			"img_url": "http://wurongle.github.io/wedding/avatar2.jpg",
+			"img_width": "108",
+			"img_height": "108",
+			"desc": "吴川市兰石镇开发区，2014年11月26日上午11点",
+			"title": "[婚宴邀约]伍荣乐&杨华莲"
+			},function(res){});
+		});
 	}
 
 	if (typeof WeixinJSBridge == "undefined"){
