@@ -115,7 +115,7 @@
 		});
 	});
 	function onBridgeReady(){
-		WeixinJSBridge.call('hideOptionMenu');
+		//WeixinJSBridge.call('hideOptionMenu');
 		WeixinJSBridge.call("hideToolbar");
 		WeixinJSBridge.on('menu:share:appmessage' , function(argv){
 			WeixinJSBridge.invoke('sendAppMessage',{
@@ -124,7 +124,7 @@
 			"img_height": "108",
 			"link":"http://wurongle.github.io/wedding/u.html",
 			"desc": "2014年11月26日上午11点，吴川市兰石镇开发区。",
-			"title": "[婚宴邀约]伍荣乐&杨华莲"
+			"title": "[婚宴邀约] 伍荣乐&杨华莲"
 			},function(res){});
 		});
 	}
