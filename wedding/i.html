@@ -11,7 +11,7 @@
 	<audio src="./bgm.mp3" autoplay="autoplay" loop="loop"></audio>
 	<div id="main" class="main">
 		<div class="inner">
-			<div class="avatar_wrp">
+			<div id="avatar_wrp" class="avatar_wrp">
 				<img id="avatar" class="avatar" onclick="changeAvatar(this)">
 			</div>
 			<h2>我们结婚啦！</h2>
@@ -101,6 +101,9 @@
 			avatar1 = _img.src;
 			document.getElementById('avatar').src = _img.src;
 			document.getElementById('loading').className += ' animated fadeOut'; 
+			setTimeout(function (argument) {
+				document.getElementById('loading').remove();
+			},1500);
 			document.getElementById('main').className += ' animated fadeIn'; 
 		});
 		loadImage('avatar2.jpg',function (_img) {
