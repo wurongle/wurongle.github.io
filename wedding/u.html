@@ -106,7 +106,7 @@
 			document.getElementById('avatar').src = _img.src;
 			document.getElementById('loading').className += ' animated fadeOut'; 
 			setTimeout(function (argument) {
-				document.getElementById('loading').remove();
+				document.getElementById('loading').style.display = 'none';
 			},1500);
 			document.getElementById('main').className += ' animated fadeIn'; 
 		});
@@ -116,7 +116,7 @@
 	});
 	function onBridgeReady(){
 		//WeixinJSBridge.call('hideOptionMenu');
-		WeixinJSBridge.call("hideToolbar");
+		//WeixinJSBridge.call("hideToolbar");
 		WeixinJSBridge.on('menu:share:appmessage' , function(argv){
 			WeixinJSBridge.invoke('sendAppMessage',{
 			"img_url": "http://wurongle.github.io/wedding/avatar2.jpg",

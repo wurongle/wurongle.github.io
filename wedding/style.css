@@ -42,7 +42,7 @@ padding: 20px;}
 	.icon_location{background-image: url(location.png);}
 	.icon_phone{background-image: url(phone.png);width:16px;height:16px;background-size:16px;vertical-align:-2px;}
 
-	.loading_wrp{display: none; position:absolute;width:100%;top: 0;bottom: 0;left: 0;background: #ffb4bf;}
+	.loading_wrp{position:absolute;width:100%;top: 0;bottom: 0;left: 0;background: #ffb4bf;}
 	.loading{
 		-webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
