@@ -10,6 +10,7 @@ padding: 20px;}
 	.main h2{font-weight:normal;font-size:30px;margin-top:10px}
 	.main .time{}
 	.main .location{margin:70px 0 10px;}
+  .main a {color:#fff;text-decoration:none;}
 	.main .phone{}
   .uname{opacity:0; position: absolute;top:-15%;text-align: center;width:80%;-webkit-box-sizing: border-box;box-sizing: border-box;}
   .avatar_wrp{position:relative;}
