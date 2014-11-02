@@ -114,8 +114,29 @@
 			avatar2 = _img.src;
 		});
 	});
+	function onBridgeReady(){
+		WeixinJSBridge.call('hideOptionMenu');
+		WeixinJSBridge.call("hideToolbar");
+		WeixinJSBridge.on('menu:share:appmessage' , function(argv){
+		WeixinJSBridge.invoke('sendAppMessage',{
+		"img_url": "http://wurongle.github.io/wedding/avatar2.jpg",
+		"img_width": "108",
+		"img_height": "108",
+		"desc": "台山市公益镇恒益酒店，2014年11月27日下午5点半",
+		"title": "[婚宴邀约]伍荣乐&杨华莲"
+		},function(res){});
+	}
 
-
+	if (typeof WeixinJSBridge == "undefined"){
+	    if( document.addEventListener ){
+	        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	    }else if (document.attachEvent){
+	        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+	        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+	    }
+	}else{
+	    onBridgeReady();
+	}
 	</script>
 </body>
 </html>

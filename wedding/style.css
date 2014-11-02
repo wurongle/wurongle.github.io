@@ -11,7 +11,7 @@ padding: 20px;}
 	.main .time{}
 	.main .location{margin:70px 0 10px;}
 	.main .phone{}
-  .uname{opacity:0; position: absolute;top:-25%;text-align: center;width:80%;-webkit-box-sizing: border-box;box-sizing: border-box;}
+  .uname{opacity:0; position: absolute;top:-15%;text-align: center;width:80%;-webkit-box-sizing: border-box;box-sizing: border-box;}
   .avatar_wrp{position:relative;}
   .avatar_wrp.show:before{
     position: absolute;

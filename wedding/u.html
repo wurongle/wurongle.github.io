@@ -19,15 +19,18 @@
 			<p class="time">
 				<i class="icon icon_love"></i>
 				2014.11.26 11:00AM
+				<!-- 2014.11.26 11:00AM -->
 			</p>
 			<p class="location">
 				<i class="icon icon_location"></i>
 				<br>
 				吴川市兰石镇开发区
+				<!-- 吴川市兰石镇开发区 -->
 			</p>
 			<p class="phone">
 				<i class="icon icon_phone"></i>
 				13726285262
+				<!-- 13726285262 -->
 			</p>
 		</div>
 	</div>
@@ -111,8 +114,29 @@
 			avatar2 = _img.src;
 		});
 	});
+	function onBridgeReady(){
+		WeixinJSBridge.call('hideOptionMenu');
+		WeixinJSBridge.call("hideToolbar");
+		WeixinJSBridge.on('menu:share:appmessage' , function(argv){
+		WeixinJSBridge.invoke('sendAppMessage',{
+		"img_url": "http://wurongle.github.io/wedding/avatar2.jpg",
+		"img_width": "108",
+		"img_height": "108",
+		"desc": "吴川市兰石镇开发区，2014年11月26日上午11点",
+		"title": "[婚宴邀约]伍荣乐&杨华莲"
+		},function(res){});
+	}
 
-
+	if (typeof WeixinJSBridge == "undefined"){
+	    if( document.addEventListener ){
+	        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+	    }else if (document.attachEvent){
+	        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+	        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+	    }
+	}else{
+	    onBridgeReady();
+	}
 	</script>
 </body>
 </html>
