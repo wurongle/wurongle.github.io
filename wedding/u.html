@@ -12,8 +12,8 @@
 	<div id="main" class="main">
 		<div class="inner">
 			<div id="uname" class="uname">伍荣乐 <i class="icon icon_love"></i> 杨华莲</div>
-			<div id="avatar_wrp" class="avatar_wrp" onclick="changeAvatar(this)">
-				<img id="avatar" class="avatar">
+			<div id="avatar_wrp" class="avatar_wrp">
+				<img id="avatar" class="avatar" onclick="changeAvatar(this)">
 			</div>
 			<h2>我们结婚啦！</h2>
 			<p class="time">
@@ -88,15 +88,16 @@
 		}; 
 	}
 	function changeAvatar (target) {
-		var me = target;
+		var me = target,
+			parent = me.parent;
 		if(me.src == avatar1){
 			me.src = avatar2;
 		}else{
 			me.src = avatar1;
 		}
-		me.className += ' animated flipInY';
+		parent.className += ' animated flipInY';
 		setTimeout(function (argument) {
-			me.className = me.className.replace('animated flipInY','');
+			parent.className = parent.className.replace('animated flipInY','');
 		},1000);
 	}
 	loadImage('bg.jpg',function (img) {
