@@ -12,7 +12,7 @@
     <script type="text/javascript" src="zepto.js"></script>
     <script type="text/javascript" src="jpeg_encoder_basic.js"></script>
     <script type="text/javascript">
-    var encoder = new JPEGEncoder;
+    /*var encoder = new JPEGEncoder;
     function example(quality){
         // Pass in an existing image from the page
         var theImg = document.getElementById('testimage');
@@ -31,7 +31,8 @@
     }
     setTimeout(function (argument) {
         example(80);
-    },5000);
+    },5000);*/
+    var Z = Zepto;
     var fileAdd = function(e){
         e = e || window.event;
         var files = e.target.files,
