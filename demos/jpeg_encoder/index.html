@@ -11,6 +11,7 @@
     <script type="text/javascript" src="zepto.js"></script>
     <script type="text/javascript" src="jpeg_encoder_basic.js"></script>
     <script type="text/javascript">
+    var encoder = new JPEGEncoder;
     function example(quality){
         // Pass in an existing image from the page
         var theImg = document.getElementById('testimage');
@@ -22,7 +23,7 @@
         ctx.drawImage(theImg,0,0);
         var theImgData = (ctx.getImageData(0, 0, cvs.width, cvs.height));
         // Encode the image and get a URI back
-        var jpegURI = JPEGEncoder.encode(theImgData, quality);
+        var jpegURI = encoder.encode(theImgData, quality);
         var img = document.createElement('img');
         img.src = jpegURI;
         document.body.appendChild(img);
