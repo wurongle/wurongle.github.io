@@ -8,6 +8,7 @@
 <body>
     <img src="webwxgeticon.jpg" id="testimage">
     <input class="uploader" type="file" accept="image/gif,image/png,image/jpeg" id="addfile">
+    <div id="container"></div>
     <script type="text/javascript" src="zepto.js"></script>
     <script type="text/javascript" src="jpeg_encoder_basic.js"></script>
     <script type="text/javascript">
@@ -31,7 +32,73 @@
     setTimeout(function (argument) {
         example(80);
     },5000);
-    
+    var fileAdd = function(e){
+        e = e || window.event;
+        var files = e.target.files,
+            length = files.length;
+        if(length > 0){
+            var size = files[0].size;
+            if(size > 5000000){
+                alert('最多可上传5M的图片');
+                return;
+            }
+
+            var uploader = Z('#uploader').find(".uploader_wrp"),
+                count = Z("#container img").length;
+
+            //插入图片
+            if(length + count > 5){
+                alert('最多可上传5张图片');
+                return;
+            }
+            else{
+                //插入loading状态
+                Z('#container').prepend('<li class="js_loading loading_item">loading</li>');
+                var reader = new FileReader;
+                reader.onload = function(e){
+                    var img = new Image;
+                    img.onload = function(){
+                        var canvas=document.createElement("canvas"),
+                        ctx=canvas.getContext("2d");
+
+                        ctx.drawImage(img,0,0,100,100);
+                        var base64 = canvas.toDataURL("image/png");
+                        var tmpLi = [];
+                        tmpLi.push('<li><img class="js_thumb" src="');
+                        tmpLi.push(base64);
+                        tmpLi.push('"></li>');
+                        Z('#container').prepend(tmpLi.join(""));
+                        Z('#container .js_loading').remove();
+                    };
+                }
+                reader.readAsDataURL(file)
+                /*ImageUploader.compressFile(files[0], {}, function(result){
+                    var tmpLi = [];
+                    tmpLi.push('<li><img class="js_thumb" src="');
+                    tmpLi.push(result.base64);
+                    tmpLi.push('" alt="thumb" style="width:54px;height:54px;"></li>');
+                    Z('#container').prepend(tmpLi.join(""));
+                    Z('#container .js_loading').remove();
+
+                    Z('#container .js_thumb').on('click', imgdel).removeClass("js_thumb");
+                });*/
+
+                /*if(count == 4){
+                    //隐藏上传按钮
+                    uploader.parent().hide();
+                }
+                uploader.html(uploader.html());
+                Z('#addfile').data('count', count + 1).on('change', fileAdd);*/
+            }
+        }
+    };
+    if(window.File && window.FileList && window.FileReader && window.Blob){
+        //支持
+        Z('#addfile').on('change', fileAdd);
+    }
+    else{
+        alert("error");
+    }
     </script>
 </body>
 </html>
