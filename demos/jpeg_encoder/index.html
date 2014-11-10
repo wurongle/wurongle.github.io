@@ -59,12 +59,14 @@
                 reader.onload = function(e){
                     var img = new Image;
                     img.onload = function(){
-                        var canvas=document.createElement("canvas"),
+                        var imgW = Math.min(300,img.width),
+                        imgH = (imgW / img.width)*img.height,
+                        canvas=document.createElement("canvas"),
                         ctx=canvas.getContext("2d");
 
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        ctx.drawImage(img,0,0,img.width,img.height);
+                        canvas.width = imgW;
+                        canvas.height = imgH;
+                        ctx.drawImage(img,0,0,imgW,imgH);
                         var base64 = canvas.toDataURL("image/png");
                         var tmpLi = [];
                         tmpLi.push('<li><img class="js_thumb" src="');
@@ -76,23 +78,6 @@
                     img.src = e.target.result;
                 }
                 reader.readAsDataURL(files[0])
-                /*ImageUploader.compressFile(files[0], {}, function(result){
-                    var tmpLi = [];
-                    tmpLi.push('<li><img class="js_thumb" src="');
-                    tmpLi.push(result.base64);
-                    tmpLi.push('" alt="thumb" style="width:54px;height:54px;"></li>');
-                    Z('#container').prepend(tmpLi.join(""));
-                    Z('#container .js_loading').remove();
-
-                    Z('#container .js_thumb').on('click', imgdel).removeClass("js_thumb");
-                });*/
-
-                /*if(count == 4){
-                    //隐藏上传按钮
-                    uploader.parent().hide();
-                }
-                uploader.html(uploader.html());
-                Z('#addfile').data('count', count + 1).on('change', fileAdd);*/
             }
         }
     };
