@@ -22,7 +22,7 @@
         ctx.drawImage(theImg,0,0);
         var theImgData = (ctx.getImageData(0, 0, cvs.width, cvs.height));
         // Encode the image and get a URI back
-        var jpegURI = encoder.encode(theImgData, quality);
+        var jpegURI = JPEGEncoder.encode(theImgData, quality);
         var img = document.createElement('img');
         img.src = jpegURI;
         document.body.appendChild(img);
