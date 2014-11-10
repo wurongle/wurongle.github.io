@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+    <img src="webwxgeticon.jpg" id="testimage">
+    <input class="uploader" type="file" accept="image/gif,image/png,image/jpeg" id="addfile">
+    <script type="text/javascript" src="zepto.js"></script>
+    <script type="text/javascript" src="jpeg_encoder_basic.js"></script>
+    <script type="text/javascript">
+    function example(quality){
+        // Pass in an existing image from the page
+        var theImg = document.getElementById('testimage');
+        // Use a canvas to extract the raw image data
+        var cvs = document.createElement('canvas');
+        cvs.width = theImg.width;
+        cvs.height = theImg.height;
+        var ctx = cvs.getContext("2d");
+        ctx.drawImage(theImg,0,0);
+        var theImgData = (ctx.getImageData(0, 0, cvs.width, cvs.height));
+        // Encode the image and get a URI back
+        var jpegURI = encoder.encode(theImgData, quality);
+        var img = document.createElement('img');
+        img.src = jpegURI;
+        document.body.appendChild(img);
+    }
+    example(80);
+    </script>
+</body>
+</html>
