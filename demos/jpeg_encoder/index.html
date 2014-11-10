@@ -62,7 +62,9 @@
                         var canvas=document.createElement("canvas"),
                         ctx=canvas.getContext("2d");
 
-                        ctx.drawImage(img,0,0,100,100);
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        ctx.drawImage(img,0,0,img.width,img.height);
                         var base64 = canvas.toDataURL("image/png");
                         var tmpLi = [];
                         tmpLi.push('<li><img class="js_thumb" src="');
