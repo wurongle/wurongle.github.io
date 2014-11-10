@@ -71,6 +71,7 @@
                         Z('#container').prepend(tmpLi.join(""));
                         Z('#container .js_loading').remove();
                     };
+                    img.src = e.target.result;
                 }
                 reader.readAsDataURL(files[0])
                 /*ImageUploader.compressFile(files[0], {}, function(result){
