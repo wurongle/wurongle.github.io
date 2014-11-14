@@ -812,7 +812,7 @@ var page = {
             me.showData(pathStr);
         }, false);
         if(window.File && window.FileList && window.FileReader && window.Blob){
-            Zepto(document).on("click","#addfile",me.uploadImg);
+            Zepto(document).on("change","#addfile",me.uploadImg);
         }else{
             alert("error");
         }
