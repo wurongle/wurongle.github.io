@@ -14,8 +14,8 @@
         <div id="tree"></div>
         <div id="leaf"></div>
         <div id="comment"></div>
-        <div id="imgview"></div>
-        <div id="result">
+        <div id="imgview" style="display:none;"></div>
+        <div id="result" style="display:none;">
             <div class="page_msg">
                 <div class="icon_area">
                     <i class="icon_msg success"></i>
@@ -100,7 +100,7 @@
         <input type="hidden" name="image" value="{{each images as img i}}{{if i!=0}}###{{/if}}{{img}}{{/each}}"/>
         </form>
         <iframe id="postFrame" name="postFrame" class="iframe" src="about:blank"></iframe>
-        <a href="javascript:" class="btn btn_primary btn_disabled js_btn_submit">提交</a>
+        <a href="javascript:" class="btn btn_primary {{if !selectedid}}btn_disabled{{if/}} js_btn_submit">提交</a>
     </div>
     </script>
     <script id="tpl_comment" type="text/html">
