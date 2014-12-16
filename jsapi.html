@@ -1,0 +1,19 @@
+<h1>hello jsapi.</h1>
+<script>
+function callback(){
+  WeixinJSBridge.on("menu:share:timeline", function(){
+    alert("506");
+  });
+}
+
+if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+    callback();
+} else {
+    if (document.addEventListener) {
+        document.addEventListener("WeixinJSBridgeReady", callback, false);
+    } else if (document.attachEvent) {
+        document.attachEvent("WeixinJSBridgeReady", callback);
+        document.attachEvent("onWeixinJSBridgeReady", callback);
+    }
+}
+</script>
