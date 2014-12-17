@@ -9,6 +9,7 @@
 - [AngularJS UI](http://angular-ui.github.io/)
 - [Angular Material](https://material.angularjs.org/)
 - [ngInfiniteScroll](http://sroze.github.io/ngInfiniteScroll/index.html)
+- [ngAnimate](http://augus.github.io/ngAnimate/)
 
 ### 性能优化
 - [AngularJS性能优化心得](https://github.com/atian25/blog/issues/5)
