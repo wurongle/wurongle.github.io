@@ -1,5 +1,50 @@
 testshare
 <script>
+function onBridgeReady() {
+    WeixinJSBridge.call("hideToolbar");
+    WeixinJSBridge.on('menu:share:appmessage',
+    function(argv) {
+        WeixinJSBridge.invoke('sendAppMessage', {
+            "img_url": "http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRzNyksbtsXmn9n8yiaY6OfLAXC7AVWicYSguc47ibOicWfRDkf2j3eZ5msoKw9Yx2aeuicazn0leAtI8w/0",
+            "img_width": "108",
+            "img_height": "108",
+            "link": location.href,
+            "desc": desc_share,
+            "title": title_share
+        },
+        function(res) {})
+    });
+    WeixinJSBridge.on('menu:share:timeline',
+    function(argv) {
+        WeixinJSBridge.invoke('shareTimeline', {
+            "img_url": "http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRzNyksbtsXmn9n8yiaY6OfLAXC7AVWicYSguc47ibOicWfRDkf2j3eZ5msoKw9Yx2aeuicazn0leAtI8w/0",
+            "img_width": "108",
+            "img_height": "108",
+            "link": location.href,
+            "desc": desc_share,
+            "title": title_share
+        },
+        function(res) {});
+    });
+    WeixinJSBridge.on('menu:share:weibo',
+    function(argv) {
+        WeixinJSBridge.invoke('shareWeibo', {
+            "img_url": "http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRzNyksbtsXmn9n8yiaY6OfLAXC7AVWicYSguc47ibOicWfRDkf2j3eZ5msoKw9Yx2aeuicazn0leAtI8w/0",
+            "img_width": "108",
+            "img_height": "108",
+            "link": location.href,
+            "desc": desc_share,
+            "title": title_share
+        },
+        function(res) {});
+    });
+}
+/*if (document.addEventListener) {
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+} else if (document.attachEvent) {
+    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+}*/
+
  var share_title = '2015年1月华语电影PK进口大片，你最想看哪一部？';
         var share_desc 	= "好莱坞巨作“羊”气开场，猫眼电影贺岁新片大盘点！";
         var share_img	= "http://p1.meituan.net/mmc/40fd90a85be8279301669b5cd081a9a788337.jpg";
@@ -10,6 +55,8 @@ testshare
                 "link": share_link,
                 "img_url": share_img,
                 "desc": share_desc,
+                "img_width": "108",
+            "img_height": "108",
                 "title": share_title
             }, function (res) {
                 // 返回res.err_msg,取值
@@ -27,7 +74,9 @@ testshare
                 "link": share_link,
                 "img_url": share_img,
                 "desc": share_desc,
-                "title": share_title
+                "title": share_title,
+                "img_width": "108",
+            "img_height": "108"
             }, function (res) {
                 // 返回res.err_msg,取值
                 // share_timeline:cancel 用户取消
