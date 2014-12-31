@@ -5,7 +5,7 @@ function onBridgeReady() {
     WeixinJSBridge.on('menu:share:appmessage',
     function(argv) {
         WeixinJSBridge.invoke('sendAppMessage', {
-            "img_url": "http://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRzNyksbtsXmn9n8yiaY6OfLAXC7AVWicYSguc47ibOicWfRDkf2j3eZ5msoKw9Yx2aeuicazn0leAtI8w/0",
+            "img_url": "http://p1.meituan.net/mmc/40fd90a85be8279301669b5cd081a9a788337.jpg",
             "img_width": "108",
             "img_height": "108",
             "link": location.href,
@@ -39,11 +39,11 @@ function onBridgeReady() {
         function(res) {});
     });
 }
-/*if (document.addEventListener) {
+if (document.addEventListener) {
     document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
 } else if (document.attachEvent) {
     document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-}*/
+}
 
  var share_title = '2015年1月华语电影PK进口大片，你最想看哪一部？';
         var share_desc 	= "好莱坞巨作“羊”气开场，猫眼电影贺岁新片大盘点！";
@@ -88,7 +88,7 @@ function onBridgeReady() {
             })
         }
         // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
-        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+        /*document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
             // 发送给好友
             WeixinJSBridge.on('menu:share:appmessage', function (argv) {
                 shareFriend();
@@ -97,5 +97,5 @@ function onBridgeReady() {
             WeixinJSBridge.on('menu:share:timeline', function (argv) {
                 toWexinFriends();
             });
-        }, false)
+        }, false)*/
 </script>
