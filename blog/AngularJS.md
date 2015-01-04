@@ -13,6 +13,10 @@
 
 ### 性能优化
 - [AngularJS性能优化心得](https://github.com/atian25/blog/issues/5)
+- 
+
+### Bug
+- [Comment tags are counted as part of the "exactly one root element" for templates for directives with replace mode](https://github.com/angular/angular.js/issues/9212)
 
 ### 参考文章
 - [angularJs项目实战！01：模块划分和目录组织](http://www.angularjs.cn/A08q)
