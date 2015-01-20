@@ -568,24 +568,38 @@ body {
   height: 100%;
   font-size: 14;
 }
-.letter {
+.state_profile {
+  text-align: center;
+  padding: 30px 15px;
+}
+.state_profile .avater {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.state_list .letter {
   line-height: 22px;
   color: #8a898e;
   background-color: #f1f0f5;
   padding-left: 15px;
 }
-.letter_wrap {
+.state_list .letter_selector_warp {
+  padding: 0 10px;
+}
+.state_list .letter_wrap {
   position: fixed;
-  right: 5px;
+  right: 0;
   top: 0;
   height: 100%;
   display: table;
 }
-.letter_wrap .letter_inner {
+.state_list .letter_wrap .letter_inner {
   display: table-cell;
   vertical-align: middle;
 }
-.letter_selector {
+.state_list .letter_selector {
   width: 20px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
@@ -597,17 +611,6 @@ body {
   vertical-align: middle;
   padding: 5px 0;
   line-height: 16px;
-}
-.state_profile {
-  text-align: center;
-  padding: 30px 15px;
-}
-.state_profile .avater {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
 }
 </style>
         <script type="text/javascript" src="http://support.weixin.qq.com/zh_CN/htmledition/common/js/lib/zepto.js"></script>
@@ -628,7 +631,9 @@ body {
 	        <div id="user_list" class="label_box"></div>
 	        <div class="letter_wrap">
 	        	<div class="letter_inner">
-	        		<ul id="letter_selector" class="letter_selector"></ul>
+	        		<div id="letter_selector_warp" class="letter_selector_warp">
+	        			<ul id="letter_selector" class="letter_selector"></ul>
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -1617,6 +1622,7 @@ body {
 
     var page = {
         init: function () {
+            this.letter_selector_warp = document.getElementById('letter_selector_warp');
             this.letter_selector = document.getElementById('letter_selector');
             this.user_list = document.getElementById('user_list');
             this.state_intro = document.getElementById('state_intro');
@@ -1630,13 +1636,13 @@ body {
             this.bind();
         },
         bind: function () {
-            var offsetTop = this.letter_selector.offsetTop,
-                totalHeight = this.letter_selector.offsetHeight,
+            var offsetTop = this.letter_selector_warp.offsetTop,
+                totalHeight = this.letter_selector_warp.offsetHeight,
                 letterList = this.getLetterList(),
                 itemHeight = totalHeight/letterList.length;
 
-            this.letter_selector.addEventListener('touchstart', letterSelectedHandler, false);
-            this.letter_selector.addEventListener('touchmove', letterSelectedHandler, false);
+            this.letter_selector_warp.addEventListener('touchstart', letterSelectedHandler, false);
+            this.letter_selector_warp.addEventListener('touchmove', letterSelectedHandler, false);
             function letterSelectedHandler (e) {
                 var y = e.changedTouches[0].pageY - window.scrollY - offsetTop,
                     index = 0;
