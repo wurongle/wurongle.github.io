@@ -610,14 +610,14 @@ body {
   -webkit-border-radius: 50%;
 }
 </style>
-        <!--<script type="text/javascript" src="http://support.weixin.qq.com/zh_CN/htmledition/common/js/lib/zepto.js"></script>-->
+        <script type="text/javascript" src="http://support.weixin.qq.com/zh_CN/htmledition/common/js/lib/zepto.js"></script>
     </head>
     
     <body>
     	<div id="state_intro" class="state_intro" style="display:none;">
     		
     	</div>
-    	<div id="state_list" class="state_list" style="display:none;">
+    	<div id="state_list" class="state_list">
     		<div class="search_bar style1">
 	            <div class="search_input_box search_prepend search_append">
 	                <input type="text" class="search_input" placeholder="搜索">
@@ -1612,7 +1612,7 @@ body {
 			}
 		};
         </script>
-        <script type="text/javascript">(function ($) {
+        <script type="text/javascript">//(function ($) {
     _letterList = [];
 
     var page = {
@@ -1628,7 +1628,6 @@ body {
             this.renderUserList(userData,this.user_list);
             this.renderLetterList(userData,this.letter_selector);
             this.bind();
-            this.setState('list');
         },
         bind: function () {
             var offsetTop = this.letter_selector.offsetTop,
@@ -1681,9 +1680,9 @@ body {
                     _letterList.push([currentLetter,itemCounter*45+letterCounter*22]);
                     letterCounter++;
                     tpl.push('<h4 id="#'+currentLetter+'" class="letter">'+currentLetter+'</h4>\
-                              <a class="label_item lbl_access_after single_vm top_letter" href="javascript:" onclick="clickUser('+item+')">');
+                              <a class="label_item lbl_access_after single_vm top_letter" href="javascript:" onclick="page.select('+item+')">');
                 }else{
-                    tpl.push('<a class="label_item lbl_access_after single_vm" href="javascript:" onclick="clickUser(\''+item+'\')">');
+                    tpl.push('<a class="label_item lbl_access_after single_vm" href="javascript:" onclick="page.select('+item+')">');
                 }
                 itemCounter++;
                 tpl.push('<div class="label_inner">\
@@ -1717,54 +1716,43 @@ body {
             this.letterList = list;
             return list;*/
         },
-        pushHistoryState:function (hast,data) {
-            var url = document.location.protocol + '//' + document.location.host + document.location.pathname + document.location.search;
-            window.history.pushState(data, document.title, url + '#' + hast);
-        },
         select: function (rtx) {
-            this.setState('profile',{'rtx':rtx});
+            var url = document.location.protocol + '//' + document.location.host + document.location.pathname + document.location.search;
+            window.history.pushState({"rtx":rtx}, document.title, url + '#' + rtx);
         },
-        setState: function (state,data) {
+        setState: function (state) {
 
             switch(state){
                 case 'intro':
-                    this.state_intro.style.display = 'block';
-                    this.state_list.style.display = 'none';
-                    this.state_profile.style.display = 'none';
-                    this.state_result.style.display = 'none';
+                    this.state_intro.display = 'block';
+                    this.state_list.display = 'none';
+                    this.state_profile.display = 'none';
+                    this.state_result.display = 'none';
                     break;
                 case 'list':
-                    this.state_intro.style.display = 'none';
-                    this.state_list.style.display = 'block';
-                    this.state_profile.style.display = 'none';
-                    this.state_result.style.display = 'none';
+                    this.state_intro.display = 'none';
+                    this.state_list.display = 'block';
+                    this.state_profile.display = 'none';
+                    this.state_result.display = 'none';
                     break;
                 case 'profile':
-                    this.state_intro.style.display = 'none';
-                    this.state_list.style.display = 'none';
-                    this.state_profile.style.display = 'block';
-                    this.state_result.style.display = 'none';
-                    document.getElementById('avater').src="http://wx.qlogo.cn/mmhead/"+userData[data.rtx].i+"/0"
-                    document.getElementById('rtx').innerHTML = data.rtx;
-                    document.getElementById('name').innerHTML = userData[data.rtx].n;
+                    this.state_intro.display = 'none';
+                    this.state_list.display = 'none';
+                    this.state_profile.display = 'block';
+                    this.state_result.display = 'none';
                     break;
                 case 'result':
-                    this.state_intro.style.display = 'none';
-                    this.state_list.style.display = 'none';
-                    this.state_profile.style.display = 'none';
-                    this.state_result.style.display = 'block';
-                    
+                    this.state_intro.display = 'none';
+                    this.state_list.display = 'none';
+                    this.state_profile.display = 'none';
+                    this.state_result.display = 'block';
                     break;
             }
-            this.pushHistoryState(state,data);
         }
     };
     // run
     page.init();
-    window.clickUser = function (rtx) {
-        page.select(rtx);
-    };
 
-})();</script>
+//})(Zepto);</script>
     </body>
 </html>
