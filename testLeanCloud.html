@@ -29,6 +29,12 @@
           var name = "photo.jpg";
         
           var avFile = new AV.File(name, file);
+          avFile.save().then(function() {
+            // The file has been saved to AV.
+            alert('upload file success.');
+            }, function(error) {
+            // The file either could not be read, or could not be saved to AV.
+            });
         }
     })
     </script>
