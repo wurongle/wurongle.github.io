@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test LeanCloud</title>
+    
+</head>
+<body>
+    <script src="https://leancloud.cn/scripts/lib/av-0.4.7.min.js"></script>
+    <script>
+    AV.initialize("6nbqpgagfsyrxrp8qqied3mzpspja3qbpyloqj4bwyp8mowr", "pbszdc1u9wlbwmeuair32v9kdooq7e4i6u358yqe3937n5ng");
+    var TestObject = AV.Object.extend("TestObject");
+    var testObject = new TestObject();
+    testObject.save({foo: "bar"}, {
+      success: function(object) {
+      alert("LeanCloud works!");
+      }
+    });
+    </script>
+</body>
+</html>
