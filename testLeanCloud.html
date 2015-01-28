@@ -7,16 +7,30 @@
     
 </head>
 <body>
+    <input type="text" id="inp_save"/><button id="btn_save">save</button><br/>
+    <input type="file" id="profilePhotoFileUpload"><button id="btn_upload">upload</button>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script src="https://leancloud.cn/scripts/lib/av-0.4.7.min.js"></script>
     <script>
     AV.initialize("6nbqpgagfsyrxrp8qqied3mzpspja3qbpyloqj4bwyp8mowr", "pbszdc1u9wlbwmeuair32v9kdooq7e4i6u358yqe3937n5ng");
-    var TestObject = AV.Object.extend("TestObject");
-    var testObject = new TestObject();
-    testObject.save({foo: "bar"}, {
-      success: function(object) {
-      alert("LeanCloud works!");
-      }
-    });
+    $('#btn_save').on('click',function(){
+        var TestObject = AV.Object.extend("TestObject");
+        var testObject = new TestObject();
+        testObject.save({foo: $('#inp_save').val()}, {
+          success: function(object) {
+              alert("LeanCloud works!");
+          }
+        });
+    })
+    $('#btn_upload').on('click',function(){
+        var fileUploadControl = $("#profilePhotoFileUpload")[0];
+        if (fileUploadControl.files.length > 0) {
+          var file = fileUploadControl.files[0];
+          var name = "photo.jpg";
+        
+          var avFile = new AV.File(name, file);
+        }
+    })
     </script>
 </body>
 </html>
