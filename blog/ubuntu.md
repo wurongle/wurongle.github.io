@@ -29,3 +29,11 @@ ssserver -c /etc/shadowsocks.json
 ssserver -c /etc/shadowsocks.json -d start
 ssserver -c /etc/shadowsocks.json -d stop
 ```
+
+### install jsbin
+```
+npm install -g jsbin
+cd /usr/local/lib/node-modules/jsbin
+cp config.default.json /etc/jsbin.config.json
+$ JSBIN_CONFIG=/etc/jsbin.config.json jsbin
+```
