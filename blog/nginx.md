@@ -1,4 +1,4 @@
-### start/stop/restart
+### start / stop / restart
 
 ```
 /etc/init.d/nginx start
