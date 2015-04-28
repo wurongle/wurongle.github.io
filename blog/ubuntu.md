@@ -37,3 +37,13 @@ cd /usr/local/lib/node-modules/jsbin
 cp config.default.json /etc/jsbin.config.json
 $ JSBIN_CONFIG=/etc/jsbin.config.json jsbin
 ```
+
+### kill port process
+```
+netstat -plten
+
+tcp6       0      0 :::8080                 :::*                    LISTEN      
+1000       30070621    16085/java
+
+kill -9 16085
+```
