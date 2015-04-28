@@ -1,12 +1,7 @@
-### start
+### start / stop
 
 ```
 gitlab-ctl start
-```
-
-### stop
-
-```
 gitlab-ctl stop
 ```
 
