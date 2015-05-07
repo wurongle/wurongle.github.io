@@ -44,3 +44,15 @@ server {
 ```
 nohup php-cgi -b 9000 &
 ```
+### mysql
+```
+#先安装mysql在安装php
+yum install mysql mysql-server
+/etc/init.d/mysqld start 
+
+#为root账户设置密码
+mysql_secure_installation
+
+yum install php 
+yum install php-mysql 
+```
