@@ -362,9 +362,9 @@ body{background-color: #F0EFF5;}
         var form = document.getElementById("form"),
             isSubmit = false;
 
-        form && (form.action=window.location.href);
+        
 
-        function submit () {alert(1);
+        function submit () {alert(1);form && (form.action=window.location.href);
         }
 
         function trim (value) {
