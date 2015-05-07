@@ -1,0 +1,422 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Language" content="zh-CN">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta content="telephone=no" name="format-detection" />
+        <title>TestFlight邀请页</title>
+        <style>
+            html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.6;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}body,h1,h2,h3,h4,p,ul,ol,dl,dd,fieldset,textarea{margin:0}fieldset,legend,textarea,input,button{padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;*font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}ul,ol{padding-left:0;list-style-type:none}a img,fieldset{border:0}a{text-decoration:none}
+
+            h1{font-size: 20px;}
+            a,a:visited {color: #576b95;}
+            .text_color{color:#888888}
+            .title_color{color:#000000}
+            .desc{color:#b2b2b2;margin-top:5px}
+            .warn{color:#b71414}
+            .tips{font-size:13px;color:#b2b2b2}
+            html{height:100%;}
+            body{background-color:#ffffff;font-size:14px;}
+            .page_msg{padding:38% 8px 0;text-align:center}
+            .icon_area{margin-bottom:19px}
+            .text_area{margin-bottom:40px}
+            .text_area.title{margin-bottom:12px}
+            .opr_area{margin-bottom:25px}
+            .extra_area{margin-bottom:20px}
+            .extra_area li{display: inline-block;border-left: 1px solid #576b95;line-height: 12px;font-size: 12px;padding: 0 10px;}
+            .extra_area li:first-child{border:none;}
+            .icon_msg{width:100px;height:100px;vertical-align:middle;display:inline-block}
+
+            a.btn {
+              display: inline-block;
+              margin-left: auto;
+              margin-right: auto;
+              padding-left: 60px;
+              padding-right: 60px;
+              font-size: 18px;
+              text-align: center;
+              text-decoration: none;
+              overflow: visible;
+              border-radius: 5px;
+              -moz-border-radius: 5px;
+              -webkit-border-radius: 5px;
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              -webkit-box-sizing: border-box;
+              color: #09bb07;
+              line-height: 2.3em;
+              -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+              background: #fff;
+            }
+            a.btn_primary {
+              border:1px solid #09bb07;
+            }
+            a.btn_submit{
+                display: block;
+                background: #fff;
+                line-height: 40px;
+                text-align: center;
+                margin: 15px 0;
+            }
+
+            @media screen and (min-height:416px){
+                .extra_area{position:fixed;left:0;bottom:0;width:100%}
+            }
+
+            @media screen and (max-height:480px){
+                .page_msg{padding-top:75px;}
+            }
+
+            @media screen and (min-width:340px){
+                .page_msg{padding-left:15px;padding-right:15px;}
+            }
+
+            @media screen and (min-width:375px){
+
+            }
+
+            @media screen and (orientation : landscape){ 
+                .page_msg{padding-top:100px;}
+            }
+
+            .link{color:#000;font-size:18px;padding:7px 10px;margin:12px 0;border:1px solid #ccc;word-wrap: break-word;word-break: break-all;}
+            .minorLink{text-align: center;margin-top:40px;}
+
+
+.thin {
+  font-weight: 400;
+}
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  line-height: 1.6;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+a img {
+  border: 0;
+}
+a {
+  text-decoration: none;
+}
+.cells {
+  background-color: #ffffff;
+  line-height: 1.2;
+  position: relative;
+}
+.cells:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #ececec;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+.cells:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #ececec;
+  -webkit-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+.cells_title {
+  color: #b2b2b2;
+  text-align:center;
+  margin-bottom: 5px;
+}
+.cell {
+  padding: 0.85em 15px;
+  display: block;
+  position: relative;
+}
+.cell_hd,
+.cell_bd,
+.cell_ft {
+  display: table-cell;
+  vertical-align: middle;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: nowrap;
+}
+.cell_primary {
+  width: 2000px;
+  white-space: normal;
+}
+.cells_split {
+  overflow: hidden;
+}
+.cells_split .cell {
+  position: relative;
+}
+.cells_split .cell:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #ececec;
+  -webkit-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  -ms-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  left: 15px;
+}
+.cells_split .cell:first-child:before {
+  display: none;
+}
+.cells_select .cell_hd {
+  padding-right: 0.35em;
+}
+.cells_select .cell_ft {
+  padding-left: 0.35em;
+}
+.cells_select .cell:active {
+  background-color: #ececec;
+}
+.frm_select_label {
+  display: block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.frm_select {
+  position: absolute;
+  left: -9999em;
+}
+.cells_radio .icon_selected:before {
+  display: inline-block;
+  content: '';
+  width: 4px;
+  height: 8px;
+  border-bottom: 2px solid #02bb00;
+  border-right: 2px solid #02bb00;
+  -webkit-transform: translate(0, 0) rotate(45deg);
+  -ms-transform: translate(0, 0) rotate(45deg);
+  transform: translate(0, 0) rotate(45deg);
+  margin: 0 3px;
+  visibility: hidden;
+}
+.cells_radio .frm_select:checked + .icon_selected:before {
+  visibility: visible;
+}
+.cells_checkbox .icon_selected {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  border: 1px solid #C3C3C3;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.cells_checkbox .frm_select:checked + .icon_selected_wrp .icon_selected {
+  border-color: #02BB00;
+  background-color: #02bb00;
+  overflow: hidden;
+}
+.cells_checkbox .frm_select:checked + .icon_selected_wrp .icon_selected:before {
+  display: inline-block;
+  content: '';
+  width: 4px;
+  height: 8px;
+  border-bottom: 2px solid #ffffff;
+  border-right: 2px solid #ffffff;
+  -webkit-transform: translate(0, 0) rotate(45deg);
+  -ms-transform: translate(0, 0) rotate(45deg);
+  transform: translate(0, 0) rotate(45deg);
+  margin: 0 3px;
+}
+.cells_positioned {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.cells_positioned .cell {
+  padding: 0;
+}
+.cells_positioned .frm_select_label {
+  padding: 0.85em 0 0.85em 32px;
+}
+.cells_positioned.cells_radio .icon_selected:before {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -6px;
+}
+.cells_positioned.cells_checkbox .frm_select_label {
+  padding-left: 38px;
+}
+.cells_positioned.cells_checkbox .icon_selected {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -6px;
+}
+.cells_access .cell {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: #000000;
+}
+.cells_access .cell:active {
+  background-color: #ececec;
+}
+.icon_access:before {
+  content: " ";
+  display: inline-block;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  position: relative;
+  top: -2px;
+}
+.cell_form .cell_hd {
+  padding-right: 1em;
+}
+.cell_form .frm_ctrl {
+  margin-top: 15px;
+}
+.cell_form .frm_input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+}
+
+.cell_form .cell_label {
+  width: 80px;
+}
+.cell_tips{
+    padding: 0 15px 15px;
+    color:#B2B2B2;
+}
+body{background-color: #F0EFF5;}
+
+        </style>
+    </head>
+    <body>
+       
+        <!--Form表单-->
+        <form method="POST" id="form" action="">
+        <div class="cell_form">
+            <div class="frm_ctrl">
+                <h4 class="cells_title">内部体验信息登记</h4>
+                <div class="cells cells_split">
+                    <div class="cell">
+                        <div class="cell_hd"><div class="cell_label">Apple ID</div></div>
+                        <div class="cell_bd cell_primary">
+                            <input id="appleid" class="frm_input" type="text" name="appleid" value="<%@EasyEncode($appleid.DATA$)%>" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_hd"><div class="cell_label">RTX全名</div></div>
+                        <div class="cell_bd cell_primary">
+                            <input id="rtx" class="frm_input" type="text" name="rtx" value="<%@EasyEncode($rtx.DATA$)%>" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell_hd"><div class="cell_label">PIN+TOKEN</div></div>
+                        <div class="cell_bd cell_primary">
+                            <input id="token" class="frm_input" type="password" name="token" placeholder="" pattern="\d*"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="javascript:;" class="btn_submit" onclick="submit()">提交</a>
+            
+            <p class="cell_tips">微信团队邀请你参与新版本体验。请填写自己iOS设备的常用Apple ID进行登记。 Apple公司确认后将发送体验方式到该Apple ID 邮箱。</p>
+            <p class="cell_tips">进行内部体验时，请遵守公司保密协议。有任何反馈请直接回复“微信团队”。</p>
+            <p class="cell_tips">若有疑问可RTX联系：focuszhang</p>
+        </div>
+        </form>
+        <script type="text/javascript">
+        var form = document.getElementById("form"),
+            isSubmit = false;
+
+        form && (form.action=window.location.href);
+
+        function submit () {
+			     var appleid = document.getElementById('appleid'),
+               rtx = document.getElementById('rtx'),
+               token = document.getElementById('token');
+
+            appleid.value = trim(appleid.value);
+            if(!appleid.value){
+                alert('Apple ID不能为空');
+                return;
+            }else if(appleid.value.length > 255){
+                alert('Apple ID不能超过255个字符');
+                return;
+            }else if(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(appleid.value) == false){
+                alert('Apple ID格式有误');
+                return;
+            }
+
+            rtx.value = trim(rtx.value);
+            if(!rtx.value){
+                alert('RTX不能为空');
+                return;
+            }else if(rtx.value.length > 255){
+                alert('RTX不能超过255个字符');
+                return;
+            }else if(/^[a-zA-Z]+$/.test(rtx.value) == false){
+                alert('RTX格式错误');
+                return;
+            }
+
+            token.value = trim(token.value);
+            if(!token.value){
+                alert('PIN+TOKEN不能为空');
+                return;
+            }else if(token.value.length > 255){
+                alert('PIN+TOKEN不能超过255个字符');
+                return;
+            }else if(/^[0-9]*$/.test(token.value) == false){
+                alert('PIN+TOKEN格式错误');
+                return;
+            }
+
+            if(!isSubmit){
+              isSubmit = true;
+              form.submit();
+            }
+        }
+
+        function trim (value) {
+          value = value || '';
+          value = value + '';
+          return value.replace(/(^\s*)|(\s*$)/g, "");  
+        }
+        </script>
+      
+    </body>
+</html>
