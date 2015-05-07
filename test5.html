@@ -351,7 +351,7 @@ body{background-color: #F0EFF5;}
                 </div>
             </div>
 
-            <a href="javascript:;"  onclick="mysubmit()">提交</a>
+            <a href="javascript:;" class="btn_submit" onclick="mysubmit()">提交</a>
             
             <p class="cell_tips">微信团队邀请你参与新版本体验。请填写自己iOS设备的常用Apple ID进行登记。 Apple公司确认后将发送体验方式到该Apple ID 邮箱。</p>
             <p class="cell_tips">进行内部体验时，请遵守公司保密协议。有任何反馈请直接回复“微信团队”。</p>
@@ -362,9 +362,53 @@ body{background-color: #F0EFF5;}
         var form = document.getElementById("form"),
             isSubmit = false;
 
-        
+        form && (form.action=window.location.href);
 
-        function mysubmit () {alert(1);form && (form.action=window.location.href);
+        function mysubmit () {
+			     var appleid = document.getElementById('appleid'),
+               rtx = document.getElementById('rtx'),
+               token = document.getElementById('token');
+
+            appleid.value = trim(appleid.value);
+            if(!appleid.value){
+                alert('Apple ID不能为空');
+                return;
+            }else if(appleid.value.length > 255){
+                alert('Apple ID不能超过255个字符');
+                return;
+            }else if(/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(appleid.value) == false){
+                alert('Apple ID格式有误');
+                return;
+            }
+
+            rtx.value = trim(rtx.value);
+            if(!rtx.value){
+                alert('RTX不能为空');
+                return;
+            }else if(rtx.value.length > 255){
+                alert('RTX不能超过255个字符');
+                return;
+            }else if(/^[a-zA-Z]+$/.test(rtx.value) == false){
+                alert('RTX格式错误');
+                return;
+            }
+
+            token.value = trim(token.value);
+            if(!token.value){
+                alert('PIN+TOKEN不能为空');
+                return;
+            }else if(token.value.length > 255){
+                alert('PIN+TOKEN不能超过255个字符');
+                return;
+            }else if(/^[0-9]*$/.test(token.value) == false){
+                alert('PIN+TOKEN格式错误');
+                return;
+            }
+
+            if(!isSubmit){
+              isSubmit = true;
+              form.submit();
+            }
         }
 
         function trim (value) {
@@ -373,6 +417,5 @@ body{background-color: #F0EFF5;}
           return value.replace(/(^\s*)|(\s*$)/g, "");  
         }
         </script>
-      
     </body>
 </html>
