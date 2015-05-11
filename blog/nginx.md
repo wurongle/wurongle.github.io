@@ -44,6 +44,14 @@ server {
 ```
 nohup php-cgi -b 9000 &
 ```
+
+### php-fpm (php-cgi进程管理)
+```
+/etc/init.d/php-fpm start
+/etc/init.d/php-fpm stop
+/etc/init.d/php-fpm restart
+```
+
 ### mysql
 ```
 #先安装mysql在安装php
