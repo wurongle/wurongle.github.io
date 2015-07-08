@@ -6,18 +6,18 @@
 	<title>跳转中</title>
 </head>
 <body>
-	<img style="width:1px;height:1px;" src="http://weixin.qq.com/cgi-bin/invitereport?k=<%@EasyEncode($k$)%>"/>
+	<img style="width:1px;height:1px;" src="http://weixin.qq.com/cgi-bin/invitereport?k="/>
 	<script type="text/javascript">
 	
 	setTimeout(function () {
 		var ua = navigator.userAgent.toLowerCase();
-		alert(ua);
+		//alert(ua);
 		if(ua.indexOf("android") > -1) {
-	        //window.location.href= "market://details?id=com.tencent.mm";
-		}else if(ua.indexOf("ios") > -1){
-			//window.location.href= "https://itunes.apple.com/cn/app/wei/id414478124";
+	        	window.location.href= "market://details?id=com.tencent.mm";
+		}else if(ua.indexOf("iphone") > -1 || ua.indexOf("ipad") > -1){
+			window.location.href= "https://itunes.apple.com/cn/app/wei/id414478124";
 		}else{
-			//window.location.href= "http://weixin.qq.com";
+			window.location.href= "http://weixin.qq.com";
 		}
 	},200);
 	</script>
