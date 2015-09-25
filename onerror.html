@@ -1,0 +1,36 @@
+<html>
+<head></head>
+<body>
+123
+<script>
+loadJS('http://wadf.asd.com',function(){alert('1')},function(){alert('0')});
+setTimeout(function(){loadJS2('http://wadf.asd.com');},2000)
+function loadJS( src, successCb, errerCb ){
+    var script = window.document.createElement( "script" );
+    script.src = src;
+    document.getElementsByTagName('head')[0].appendChild(script); 
+    if (successCb && typeof(successCb) === "function") {
+        script.onload = successCb;
+    }
+    if (errerCb && typeof(errerCb) === "function") {
+        script.onerror = errerCb;
+    }
+    return script;
+}
+
+function loadJS2( src, successCb, errerCb ){
+    var script = window.document.createElement( "script" );
+    script.src = src;
+    document.getElementsByTagName('head')[0].appendChild(script); 
+    script.onload = script.onreadystatechange = function() {
+        if(!this.readyState ||
+            this.readyState == "loaded" || this.readyState == "complete") {
+    
+            alert(3);
+        }
+    }
+    return script;
+}
+</script>
+</body>
+</html>
