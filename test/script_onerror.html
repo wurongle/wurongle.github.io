@@ -16,7 +16,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
         (function () {
             var url = '/test.js';
             
-            loadJS(url.replace('##ver##',ver),function () {
+            loadJS(url,function () {
                 alert('ok');
             },function () {
                 // 失败重试
