@@ -1,28 +1,83 @@
-                                      <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>script_onerror</title>
+        <title>新版本</title>
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <style>
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.6;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}*{margin:0;padding:0}a img{border:0}a{text-decoration:none}.btn{position:relative;display:block;margin-left:auto;margin-right:auto;padding-left:14px;padding-right:14px;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;font-size:18px;text-align:center;text-decoration:none;color:#fff;line-height:2.33333333;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-webkit-tap-highlight-color:transparent;overflow:visible}.btn:after{content:" ";width:200%;height:200%;position:absolute;top:0;left:0;border:1px solid rgba(0,0,0,.2);-webkit-transform:scale(.5);-ms-transform:scale(.5);transform:scale(.5);-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px}.btn.btn_inline{display:inline-block}.btn_primary{background-color:#04be02}.btn_primary:not(.btn_disabled):visited{color:#fff}.btn_primary:not(.btn_disabled):active{color:rgba(255,255,255,.4);background-color:#039702}body{margin:0 auto;max-width:768px}li,ol,ul{list-style:none}.new_intro_tips{margin:15px;padding:15px;position:relative;background-color:#eee;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;text-align:center}.new_intro_tips h2{font-size:18px;font-weight:400;font-style:normal;padding:5px 0 15px}.new_intro_tips:before{content:" ";position:absolute;left:0;top:0;width:200%;height:200%;border:1px solid #c9c9c9;-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleX(.5) scaleY(.5);-ms-transform:scaleX(.5) scaleY(.5);transform:scaleX(.5) scaleY(.5);border-radius:8px;-moz-border-radius:8px;-webkit-border-radius:8px}.new_intro_title{font-size:16px;margin:0 15px}.content{padding:0 15px;font-size:14px}.content .section{position:relative;padding:20px 0}.content .section p{margin-bottom:10px}.content .section:before{content:" ";position:absolute;left:0;top:0;width:100%;height:1px;border-top:1px solid #f0f0f0;-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(.5);-ms-transform:scaleY(.5);transform:scaleY(.5)}.content .section:first-child:before{display:none}.content .img_group{padding:0;min-width:297px;overflow:hidden}.content .img_group img{float:left;width:145px}.content .img_group .img2{float:right}
 </style>
     </head>
     <body ontouchStart="">
-        <h3 class="new_intro_title">test</h3>
-        <div id="container" class="content"></div>
+
+        <h3 class="new_intro_title">
+                    test
+                </h3>
+                <div id="container" class="content"></div>
 
         <script type="text/javascript">
         (function () {
-            var url = '/test.js';
-            
-            loadJS(url,function () {
-                alert('ok');
+            var platform = 'Android'.toLowerCase() || 'ios',
+                ver = '' || 'wx_655' || 'wx_50',
+                lang = 'zh_CN' || 'en',
+                url = 'http://weixin.qq.com/zh_CN/htmledition/weixin_about/js/'+platform+'/##ver##_'+lang+'.js?v=1';
+
+
+            loadJS(url.replace('##ver##',ver),function () {
+                renderData(window.data);
             },function () {
                 // 失败重试
-                alert('error');
+                if(ver.length == 6){
+                    ver = ver.replace(/\d$/,function (v) {
+                        return '';
+                    });
+                }else if(ver.length == 5){
+                    ver = ver.replace(/\d+/,function (v) {
+                        return (+v)-1;
+                    });
+                }
+                loadJS(url.replace('##ver##',ver),function () {
+                    renderData(window.data);
+                },function () {
+                    // 失败重试
+                    if(ver.length == 5){
+                        ver = ver.replace(/\d+/,function (v) {
+                            return (+v)-1;
+                        });
+                    }
+                    loadJS(url.replace('##ver##',ver),function () {
+                        renderData(window.data);
+                    },function () {
+                        if(lang=='zh_CN'){
+                            window.data = [{p:'暂无该版本功能介绍信息。'}];
+                        }else if(lang=='zh_TW'||lang=='zh_HK'){
+                            window.data = [{p:'暫無該版本功能介紹信息。'}];
+                        }else{
+                            window.data = [{p:'No information about this version Features.'}];
+                        }
+                        renderData(window.data);
+                    });
+                });
             });
 
+            function renderData (data) {
+                var tmp = '',
+                    tpl = [];
+
+                if(!data) return;
+
+                for (var i = 0, len = data.length; i < len; i++) {
+                    tmp = '<li class="section">' + 
+                            (data[i].p ? ('<p>'+data[i].p+'</p>') : '') + 
+                            '<div class="img_group">' + 
+                            (data[i].img1 ? ('<img class="img1" src="/zh_CN/htmledition/weixin_about/images/'+platform+'/'+ver+'/' + data[i].img1 + '">') : '') + 
+                            (data[i].img2 ? ('<img class="img2" src="/zh_CN/htmledition/weixin_about/images/'+platform+'/'+ver+'/' + data[i].img2 + '">') : '') + 
+                            '</div></li>';
+                    
+                    tpl.push(tmp);
+                };
+                document.getElementById('container').innerHTML = tpl.join('');
+            }
 
             function loadJS( src, successCb, errerCb ){
                 var script = window.document.createElement( "script" );
