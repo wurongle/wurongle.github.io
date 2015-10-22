@@ -20,44 +20,19 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
             var platform = 'Android'.toLowerCase() || 'ios',
                 ver = '' || 'wx_655' || 'wx_50',
                 lang = 'zh_CN' || 'en',
-                url = 'http://weixin.qq.com/zh_CN/htmledition/weixin_about/js/'+platform+'/##ver##_'+lang+'.js?v=1';
+                url = 'http://weixin.qq.com/zh_CN/htmledition/weixin_about/js/ios/abc.js?v=1';
 
 
-            loadJS(url.replace('##ver##',ver),function () {
-                renderData(window.data);
+            loadJS(url,function () {
+                alert('weixin.qq.com ok');
             },function () {
-                // 失败重试
-                if(ver.length == 6){
-                    ver = ver.replace(/\d$/,function (v) {
-                        return '';
-                    });
-                }else if(ver.length == 5){
-                    ver = ver.replace(/\d+/,function (v) {
-                        return (+v)-1;
-                    });
-                }
-                loadJS(url.replace('##ver##',ver),function () {
-                    renderData(window.data);
-                },function () {
-                    // 失败重试
-                    if(ver.length == 5){
-                        ver = ver.replace(/\d+/,function (v) {
-                            return (+v)-1;
-                        });
-                    }
-                    loadJS(url.replace('##ver##',ver),function () {
-                        renderData(window.data);
-                    },function () {
-                        if(lang=='zh_CN'){
-                            window.data = [{p:'暂无该版本功能介绍信息。'}];
-                        }else if(lang=='zh_TW'||lang=='zh_HK'){
-                            window.data = [{p:'暫無該版本功能介紹信息。'}];
-                        }else{
-                            window.data = [{p:'No information about this version Features.'}];
-                        }
-                        renderData(window.data);
-                    });
-                });
+                alert('weixin.qq.com error');
+            });
+            
+            loadJS('http://baidu.com/test/abc.js'.replace('##ver##',ver),function () {
+                alert('baidu.com ok');
+            },function () {
+                alert('baidu.com error');
             });
 
             function renderData (data) {
