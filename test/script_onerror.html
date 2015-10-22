@@ -11,7 +11,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
     <body ontouchStart="">
 
         <h3 class="new_intro_title">
-                    test1234
+                    test12345
                 </h3>
                 <div id="container" class="content"></div>
 
@@ -24,10 +24,16 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
                 alert('weixin.qq.com error');
             });
             
-            loadJS('http://qq.com/testxx/abccc.js',function () {
-                alert('qq.com ok');
+            loadJS('http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/ccappmsg/not_in_mmcccc2xxx637ae.css',function () {
+                alert('res.wx.qq.com ok');
             },function () {
-                alert('qq.com error');
+                alert('res.wx.qq.com error');
+            });
+            
+            loadJS('http://weixin.qq.com/zh_CN/htmledition/weixin_about/js/ioxxs/cdsacbcxxx.js?v=1',function () {
+                alert('weixin.qq.com2 ok');
+            },function () {
+                alert('weixin.qq.com2 error');
             });
 
             function loadJS( src, successCb, errerCb ){
