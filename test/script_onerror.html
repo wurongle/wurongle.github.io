@@ -11,7 +11,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
     <body ontouchStart="">
 
         <h3 class="new_intro_title">
-                    test1
+                    test12
                 </h3>
                 <div id="container" class="content"></div>
 
@@ -32,7 +32,6 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
 
             function loadJS( src, successCb, errerCb ){
                 var script = window.document.createElement( "script" );
-                document.getElementsByTagName('head')[0].appendChild(script); 
                 if (successCb) {
                     script.onload = successCb;
                 }
@@ -40,6 +39,7 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
                     script.onerror = errerCb;
                 }
                 script.src = src;
+                document.getElementsByTagName('head')[0].appendChild(script); 
             }
 
         })();
