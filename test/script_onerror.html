@@ -11,48 +11,24 @@ html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{line-height:1.
     <body ontouchStart="">
 
         <h3 class="new_intro_title">
-                    test
+                    test1
                 </h3>
                 <div id="container" class="content"></div>
 
         <script type="text/javascript">
         (function () {
-            var platform = 'Android'.toLowerCase() || 'ios',
-                ver = '' || 'wx_655' || 'wx_50',
-                lang = 'zh_CN' || 'en',
-                url = 'http://weixin.qq.com/zh_CN/htmledition/weixin_about/js/ios/abc.js?v=1';
-
-
-            loadJS(url,function () {
+        	
+            loadJS('http://weixin.qq.com/zh_CN/htmledition/weixin_about/js/ios/abc.js?v=1',function () {
                 alert('weixin.qq.com ok');
             },function () {
                 alert('weixin.qq.com error');
             });
             
-            loadJS('http://baidu.com/test/abc.js'.replace('##ver##',ver),function () {
+            loadJS('http://baidu.com/test/abc.js',function () {
                 alert('baidu.com ok');
             },function () {
                 alert('baidu.com error');
             });
-
-            function renderData (data) {
-                var tmp = '',
-                    tpl = [];
-
-                if(!data) return;
-
-                for (var i = 0, len = data.length; i < len; i++) {
-                    tmp = '<li class="section">' + 
-                            (data[i].p ? ('<p>'+data[i].p+'</p>') : '') + 
-                            '<div class="img_group">' + 
-                            (data[i].img1 ? ('<img class="img1" src="/zh_CN/htmledition/weixin_about/images/'+platform+'/'+ver+'/' + data[i].img1 + '">') : '') + 
-                            (data[i].img2 ? ('<img class="img2" src="/zh_CN/htmledition/weixin_about/images/'+platform+'/'+ver+'/' + data[i].img2 + '">') : '') + 
-                            '</div></li>';
-                    
-                    tpl.push(tmp);
-                };
-                document.getElementById('container').innerHTML = tpl.join('');
-            }
 
             function loadJS( src, successCb, errerCb ){
                 var script = window.document.createElement( "script" );
