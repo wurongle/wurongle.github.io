@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    </head>
+    
+    <body id="body" class="suggestion" ontouchstart="">
+       <ul id="list"><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li><li>1</li><li>2</li></ul>
+    <script>
+    var Util = {};
+
+(function(){
+    var tapTimeout;
+    var ua = navigator.userAgent;
+    var g = {
+        isPc : /(WindowsNT)|(Windows NT)|(Macintosh)/i.test(navigator.userAgent),
+        isWp : /Windows\sPhone/i.test(ua)
+    };
+
+    //移动设备先绑定touchstart事件
+    if(!g.isPc){
+        on(document, "touchstart", function(e){
+            var st = e.changedTouches[0];
+            //记录xy坐标
+            g.x = st.clientX;
+            g.y = st.clientY;
+        });
+    }
+
+    /**
+     * 移动设备tap事件,如果是PC，自动替换成click事件
+     * @param  {[dom]}   el   [dom]
+     * @param  {Function} cb   [callback]
+     * @param  {[boolen]}   flag [是否取消冒泡]
+     */
+    function tap(el, cb, flag, className){
+        if(g.isPc || g.isWp){//如果是PC，自动替换成click事件
+            on(el, "click", className, cb, flag);
+        }else{
+            on(el, "touchend", className, function(e){
+                tapTimeout = setTimeout(function () {
+                    var st = e.changedTouches[0];
+                    //5像素内才算tap事件
+                    if ((Math.abs(g.y - st.clientY) <= 5) && (Math.abs(g.x - st.clientX) <= 5)) {
+                        return cb.call(this,e);
+                        /*
+                        var ret = cb.call(this,e);
+                        if (ret === false){
+                            e.stopPropagation && (e.stopPropagation());
+                            e.preventDefault && (e.preventDefault());
+                        }
+                        return ret;
+                        */
+                    }
+                },1000);
+            }, flag);
+        }
+    }
+
+    // 当前element是否能通过 选择器 匹配到
+    function matches(ele, className){
+        if (!ele || !className || ele.nodeType != ele.ELEMENT_NODE) return false;
+        var matchesSelector = ele.webkitMatchesSelector || ele.msMatchesSelector || ele.matchesSelector;
+        if (matchesSelector) return matchesSelector.call(ele, className);
+
+        className = className.substr(1);
+        return ele.className.indexOf(className) > -1;
+    }
+
+    // 返回与target最近的element
+    function closest(target, className, context){
+
+        while (target && !matches(target, className)) {
+            target = target !== context && target.nodeType !== target.DOCUMENT_NODE && target.parentNode;
+        }
+
+        return target;
+    }
+
+    function on(el, type, className, cb, flag){
+        var callback, handler, delegator;
+        if(type=="input" && g.isPc){//如果PC，input事件替换成keyup
+            type = "keyup";
+        }
+        if (!el) return;
+
+        if (typeof className == 'function') {
+            flag = cb;
+            cb = className;
+            className = '';
+        }
+
+        if (typeof className != 'string') {
+            className = '';
+        }
+
+        if (el == window && type == "load" && /complete|loaded/.test(document.readyState)) {
+            return cb({type:"load"});
+        }
+        if (type == 'tap') return tap(el, cb, flag, className);
+
+        callback = function(e){
+            var ret = cb(e);
+            if (ret === false){
+                e.stopPropagation && (e.stopPropagation());
+                e.preventDefault && (e.preventDefault());
+            }
+            return ret;
+        };
+
+        // 事件委托器
+        if (className && className.charAt(0)=='.') delegator = function(e){
+            var target = e.target || e.srcElement;
+            var match = closest(target, className, el);
+            if (match) {
+                e.delegatedTarget = match;
+                return callback(e);
+            }
+        }
+
+        handler = delegator || callback;
+
+        cb[type + "_handler"] = handler; // 如果不同el，同type同cb，那这样会有问题
+        if (el.addEventListener){
+            el.addEventListener(type, handler,!!flag);
+            return ;
+        }
+        if (el.attachEvent){
+            el.attachEvent("on" + type, handler,!!flag);
+            return ;
+        }
+    }
+
+    function off(el, type, cb, flag){
+        if (!el)
+            return;
+        var handler = cb[type + "_handler"] || cb;
+        if (el.removeEventListener){
+            el.removeEventListener(type, handler,!!flag);
+            return;
+        }
+        if (el.detachEvent){
+            el.detachEvent("on" + type, handler,!!flag);
+            return;
+        }
+    }
+
+    
+    on(window,'scroll',function(){
+        if (tapTimeout) clearTimeout(tapTimeout)
+    })
+
+    Util.on = on;
+    Util.off = off;
+    Util.tap = tap;
+
+
+})();
+
+Util.on(document.getElementById('list'),'tap','li',function(){alert('tap');})
+    </script>
+    </body>
+</html>
