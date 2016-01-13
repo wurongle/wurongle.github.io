@@ -8,9 +8,12 @@
     npm install --production
     ...
     vim config.js
-    change the value of host in the server section to 0.0.0.0
+    // change the value of host in the server section to 0.0.0.0
     ...
     npm start --production
     ...
     done
+    ...
+    // forever
+    NODE_ENV=production pm2 start index.js --name "Ghost"
 ```
