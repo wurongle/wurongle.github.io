@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script type="text/javascript">
+    var renderText = "微信 WeChat";
+    var renderTextHeight = 20;
+
+    var canvas = document.getElementById('canvas');
+    canvas.width = document.body.offsetWidth;
+    canvas.height = document.body.offsetHeight;
+
+    var ctx = canvas.getContext('2d');
+    ctx.font = renderTextHeight + "px serif";
+    ctx.textBaseline = "hanging";
+    ctx.fillText(renderText, 0, 0);
+
+    var imgWidth = Math.ceil(ctx.measureText(renderText).width);
+    var imgData = ctx.getImageData(0, 0, imgWidth, renderTextHeight);
+    //console.log(imgData.data);
+
+    var tmp = [];
+    imgData.data.forEach(function(item, index) {
+        var x = Math.floor((index / 4) % imgWidth),
+            y = Math.floor(index / 4 / imgWidth);
+
+        if (index % 4 == 3) {
+            if (!tmp[y]) {
+                tmp[y] = []
+            }
+            if (item > 50) {
+                ctx.fillStyle = "rgba(0,0,0," + (item / 100) + ")";
+                ctx.fillRect(x * 10, 100 + y * 10, 5, 5);
+            }
+            tmp[y][x] = item;
+        }
+    });
+    console.log(tmp);
+    </script>
+</body>
+
+</html>
