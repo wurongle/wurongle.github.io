@@ -2,8 +2,7 @@
 <html>
 
 <head>
-    <title> canvas_string_to_image </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title></title>
     <style type="text/css">
     html,
     body {
@@ -11,6 +10,7 @@
         margin: 0;
         padding: 0;
     }
+    canvas{background: #000;}
     </style>
     <script type="text/javascript">
     (function(){
@@ -36,26 +36,28 @@
     }();
 
     var renderText = "微信 WeChat";
-    var renderTextHeight = 16;
+    var renderTextHeight = 20;
 
     var canvas = document.getElementById('canvas');
     canvas.width = document.body.offsetWidth;
     canvas.height = document.body.offsetHeight;
 
     var ctx = canvas.getContext('2d');
+    ctx.save();
     ctx.font = renderTextHeight + "px serif";
     ctx.textBaseline = "hanging";
-    ctx.fillText(renderText, 0, 0);
-
+    ctx.rotate(90*Math.PI/180);
+    ctx.fillText(renderText, 0, -renderTextHeight);
     var imgWidth = Math.ceil(ctx.measureText(renderText).width);
-    var imgData = ctx.getImageData(0, 0, imgWidth, renderTextHeight);
+    ctx.restore();
+    //console.log(imgWidth);
+    var imgData = ctx.getImageData(0, 0, renderTextHeight, imgWidth);
     //console.log(imgData.data);
 
     var tmp = [];
     for(var i=0,len=imgData.data.length;i<len;i++){
-        var x = Math.floor((i / 4) % imgWidth),
-            y = Math.floor(i / 4 / imgWidth);
-
+        var x = Math.floor((i / 4) % renderTextHeight),
+            y = Math.floor(i / 4 / renderTextHeight);
         if (i % 4 == 3) {
             if (!tmp[y]) {
                 tmp[y] = []
@@ -67,7 +69,7 @@
             tmp[y][x] = [imgData.data[i],x,y,Math.random()*canvas.width,Math.random()*canvas.height,Math.floor(Math.random()*255),Math.floor(Math.random()*255),Math.floor(Math.random()*255)];
         }
     }
-    //console.log(tmp);
+    console.log(tmp);
     
     var easing = window.BezierEasing(0.76, 0.1, 0.25, 1);
     var step = 0;
@@ -81,11 +83,19 @@
                 if (_item[0] > 50) {
                     x = easing.get(step % 1);
                     step += 0.00001;
+                    ctx.shadowBlur=2;
+                    ctx.shadowColor="#ffffff";
                     ctx.fillStyle = "rgba("+_item[5]+","+_item[6]+","+_item[7]+"," + (_item[0] / 100) + ")";
                     if(Math.floor(step)%2 == 0){
-                       ctx.fillRect(_item[3] * (1-x) + _item[1] * 10 * x,_item[4] * (1-x) +  _item[2] * 10 * x, 5, 5); 
+                       //ctx.fillRect(_item[3] * (1-x) + _item[1] * 10 * x,_item[4] * (1-x) +  _item[2] * 10 * x, 5, 5); 
+                       ctx.beginPath();
+                       ctx.arc(_item[3] * (1-x) + _item[1] * 10 * x,_item[4] * (1-x) +  _item[2] * 10 * x,3,0,2*Math.PI);
+                       ctx.fill();
                    }else{
-                        ctx.fillRect(_item[3] * (x) + _item[1] * 10 * (1-x),_item[4] * (x) +  _item[2] * 10 * (1-x), 5, 5); 
+                        //ctx.fillRect(_item[3] * (x) + _item[1] * 10 * (1-x),_item[4] * (x) +  _item[2] * 10 * (1-x), 5, 5); 
+                        ctx.beginPath();
+                        ctx.arc(_item[3] * (x) + _item[1] * 10 * (1-x),_item[4] * (x) +  _item[2] * 10 * (1-x),3,0,2*Math.PI);
+                        ctx.fill();
                    }
                     
                 }
