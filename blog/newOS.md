@@ -5,5 +5,6 @@
 - cakebrew（包管理GUI）
 - Alfred（快捷启动应用程序）
 - Moom（窗口管理）
+- nearlock（A new way to lock your Mac）
 
 ## Win
