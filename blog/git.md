@@ -5,8 +5,14 @@ git reset --hard commit-id :回滚到commit-id，讲commit-id之后提交的comm
 
 git reset --hard HEAD~3：将最近3次的提交回滚
 ```
+## 远程代码库回滚1
 
-## 远程代码库回滚
+```
+git reset --hard HEAD~1
+git push --force
+```
+
+## 远程代码库回滚2
 
 ```
 应用场景：自动部署系统发布后发现问题，需要回滚到某一个commit，再重新发布
