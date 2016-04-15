@@ -1,9 +1,9 @@
 ## 本地代码库回滚
     
 ```
-    git reset --hard commit-id :回滚到commit-id，讲commit-id之后提交的commit都去除
-    
-    git reset --hard HEAD~3：将最近3次的提交回滚
+git reset --hard commit-id :回滚到commit-id，讲commit-id之后提交的commit都去除
+
+git reset --hard HEAD~3：将最近3次的提交回滚
 ```
 
 ## 远程代码库回滚
