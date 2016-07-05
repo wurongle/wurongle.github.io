@@ -8,3 +8,14 @@
 ```
 brew install node
 ```
+
+- React Native Command Line Tools
+```
+npm install -g react-native-cli
+```
+
+
+- Watchman
+```
+brew install watchman
+```
