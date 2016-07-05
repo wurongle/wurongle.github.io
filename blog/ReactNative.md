@@ -18,11 +18,14 @@ npm install -g react-native-cli
 - Watchman
 ```
 brew install watchman
+```
 
-/*
-npm r -g watchman 
-brew update && brew upgrade
-brew install watchman
-watchman 4.5--------close Deco will be ok
-*/
+- **
+```
+Q: Could not connect to devlopment server?
+A: xcode - project - info - Allow Arbitrary Loads - Yes
+
+Q: watchman error?
+A: close Deco will be ok
+A: not "npm install watchman" but "brew install watchman"
 ```
