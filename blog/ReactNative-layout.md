@@ -1,5 +1,5 @@
 # layout
-## flex
+### flex
 
 - different with css flexbox:
   - **flexDirection** defaulting to **column** instead of **row**
