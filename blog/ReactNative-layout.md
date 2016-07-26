@@ -1,6 +1,5 @@
 # layout
 ## flex
-```
-  different with css flexbox
-  **flexDirection** default **column** 
-```
+
+- different with css flexbox , **flexDirection** default **column** 
+
