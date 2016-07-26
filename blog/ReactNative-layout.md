@@ -6,6 +6,7 @@
   - **alignItems** defaulting to **stretch** instead of **flex-start**
   - **flex** parameter only supports **asingle number**
 
-- justify content, 作用于flexDirection主轴子容器，取值有**flex-start** / **center** / **flex-end** / **space-around**(两端对齐)/ **space-between**
-- align items, 作用于非flexDirection侧轴子容器，取值有**flex-start** / **center** / **flex-end** / **stretch**(拉伸)
-- align self, 作用于非flexDirection侧轴容器，取值同align items
+- justifyContent, 作用于flexDirection主轴子容器，取值有**flex-start** / **center** / **flex-end** / **space-around**(两端对齐)/ **space-between**
+- alignItems, 作用于非flexDirection侧轴子容器，取值有**flex-start** / **center** / **flex-end** / **stretch**(拉伸)
+- alignSelf, 作用于非flexDirection侧轴容器，取值同alignItems
+- flexWrap, 作用于子容器，定义子元素是否折行，取值有**wrap** / **nowrap**
