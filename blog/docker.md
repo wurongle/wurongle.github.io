@@ -1,0 +1,5 @@
+- install docker
+- start docker
+- docker pull richarvey/nginx-php-fpm
+- docker run --name phpfpm -d -p 80:80 -v /tmp/www:/var/www/html richarvey/nginx-php-fpm
+- open http://127.0.0.1/test.php
