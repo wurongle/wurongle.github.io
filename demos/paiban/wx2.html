@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+        }
+
+        .main_hd {
+            background: #fafafa;
+            width: 400px;
+            height: 100%;
+        }
+
+        .main_bd {
+            flex: 1;
+        }
+
+        .editor {
+            overflow: hidden;
+            width: 414px;
+            margin: 50px auto;
+            min-height: 800px;
+            box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+            padding: 16px;
+            box-sizing: border-box;
+        }
+        .section_list{
+            padding: 20px;
+            height: 100%;
+            overflow:scroll;
+            box-sizing: border-box;
+        }
+        .section_title{
+            background: #000;
+            color: #fff;
+            font-size: 14px;
+            display: inline-block;
+            padding:0 5px;
+            margin-top:20px;
+        }
+        .section {
+            margin: 10px 0px;
+            position: relative;
+            background: #fff;
+        }
+
+        .section_box {
+            border: 1px solid #EEE;
+        }
+        .section_box:hover{
+            border: 1px solid #ccc;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        .section_btn_copy {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            padding: 2px 10px;
+            background: #eee;
+        }
+
+        .section_btn_use {
+            position: absolute;
+            right: 10px;
+            top: 50px;
+            padding: 2px 10px;
+            background: #eee;
+        }
+        img {
+            max-width: 100%;
+        }
+        .tips{
+            position: fixed;
+            top: 0;
+            background: #07C160;
+            padding: 5px 20px;
+            color: #fff;
+            margin: 0 auto;
+            font-size: 14px;
+            left: 200px;
+            transform: translate(-50%,-100%);
+            opacity: 0;
+            transition: all 0.2s ease-in;
+        }
+        .tips.show{
+            opacity: 1;
+            transform: translate(-50%,0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="main">
+        <div class="main_hd">
+            <div class="section_list">
+                <div class="section_title">一级标题样式</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#h1_1">复制</button>
+                    <div id="h1_1" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section style="text-align:center;margin:48px 8px;">
+                            <section
+                                style="display:inline-block;border-bottom:3px solid #07C160;font-size: 20px;color: rgba(0, 0, 0, 0.9);line-height: 30px;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                                关键词：十分“正经”的比赛</section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#h1_2">复制</button>
+                    <div id="h1_2" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section style="text-align:center;margin:48px 8px;">
+                            <section style="display:inline-block;">
+                                <section
+                                    style="display:-webkit-box;display:-ms-flexbox;display:flex;;-webkit-box-align: center;-ms-flex-align: center;align-items: center;">
+                                    <section
+                                        style="border: 3px solid #07C160;border-right: none;width: 6px;height: 30px;border-radius: 2px 0px 0px 2px;">
+                                    </section>
+                                    <section
+                                        style="padding:0 8px;font-size: 20px;color: rgba(0, 0, 0, 0.9);line-height: 30px;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                                        转载文章赞赏归原创作者</section>
+                                    <section
+                                        style="border: 3px solid #07C160;border-left: none;width: 6px;height: 30px;border-radius: 0px 2px 2px 0px;">
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#h1_3">复制</button>
+                    <div id="h1_3" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="text-align:center;margin:48px 8px;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                            <section style="display:inline-block;">
+                                <section
+                                    style="background: rgba(0,0,0,0.1);width:40px;height:40px;margin:0 auto 16px;border-radius: 50%;font-size: 22px;line-height: 40px;">
+                                    1</section>
+                                <section style="color:rgba(0, 0, 0, 0.9);font-size: 20px;line-height: 30px;">“一个创作者的精致”
+                                </section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">二级标题样式</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#h2_1">复制</button>
+                    <div id="h2_1" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin:48px 8px;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                            <section style="display:inline-block;">
+                                <section
+                                    style="color: rgba(0,0,0,0.9);font-size: 17px;line-height: 32px;border-left:3px solid #07C160;padding-left:7px;">
+                                    没有开发基础行不行？</section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">引用</div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#quote_1">复制</button>
+                    <div id="quote_1" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin:48px 8px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section style="display:inline-block;margin:0 36px;">
+                                <section style="opacity: 0.5;font-size: 17px;color: #000000;text-align: justify;">
+                                    <section>
+                                        每个读者只能读到已然存在于他内心的东西。书籍只不过是一种光学仪器，帮助读者发现自己的内容。</section>
+                                    <section style="text-align:right;margin-top:20px;">——《皮囊》蔡崇达</section>
+                                </section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#quote_2">复制</button>
+                    <div id="quote_2" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin:48px 8px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section style="display:inline-block;margin:0 36px;">
+                                <section style="opacity: 0.5;font-size: 17px;color: #000000;text-align: justify;">
+                                    “想放弃的夜晚，看到你的文章，于是我看到了今天的太阳。”Nina留言。
+                                </section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">正文</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#main_1">复制</button>
+                    <div id="main_1" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin-left:8px;margin-right:8px;color:rgba(0, 0, 0, 0.9);line-height: 30px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section style="margin-bottom: 24px;">今后，原创作者收赞赏又多了一条途径：<strong>被转载的文章也能赞赏了！</strong>
+                            </section>
+                            <section style="margin-bottom: 24px;">
+                                1.公众平台上线开放转载功能，转载文章会自动带上原创作者名字，读者也可以通过文章底部的“喜欢作者”按钮进行赞赏，赞赏全部归原作者所有。除此以外，通过这一功能转载的文章不能修改，转载者可在开头添加推荐语，文章底部会显示文章来源。
+                            </section>
+                            <section style="margin-bottom: 24px;">2.除了开放转载，对于开通了赞赏的文章，通过白名单转载的文章也同样附带赞赏作者！</section>
+                            <section style="margin-bottom: 24px;">文章被开放转载后收到的赞赏，作者可以在<strong>“赞赏账户”小程序</strong>里查看。
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">Q&A</div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#qa">复制</button>
+                    <div id="qa" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin:48px 8px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section
+                                style="text-align:center;font-size: 0;line-height:40px;margin:0 auto;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                                <section
+                                    style="background: #8CE97F;width:40px;height:40px;border-radius: 50%;display:inline-block;font-size: 22px;margin:0 -4px;">
+                                    Q
+                                </section>
+                                <section
+                                    style="background: rgba(0,0,0,0.1);width:40px;height:40px;border-radius: 50%;display:inline-block;font-size: 22px;margin:0 -4px;">
+                                    A
+                                </section>
+                            </section>
+                            <section style="">
+                                <section
+                                    style="display:-webkit-box;display:-ms-flexbox;display:flex;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;margin: 16px 0 4px;">
+                                    <section>Q：</section>
+                                    <section style="-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                                        为什么上线“开放转载”功能？
+                                    </section>
+                                </section>
+                                <section style="display:-webkit-box;display:-ms-flexbox;display:flex;">
+                                    <section
+                                        style="font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                                        A：</section>
+                                    <section style="-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                                        为加大对原创作者扶持力度，为公众平台发展注入更多活力，我们推出了“开放转载”功能，希望可以降低转载者与原创者的沟通成本，增加原创作者的收益，鼓励更多优质原创内容的产生。
+                                    </section>
+                                </section>
+                            </section>
+                            <section style="">
+                                <section
+                                    style="display:-webkit-box;display:-ms-flexbox;display:flex;;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;margin: 16px 0 4px;">
+                                    <section>Q：</section>
+                                    <section style="-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                                        为什么上线“开放转载”功能？
+                                    </section>
+                                </section>
+                                <section style="display:-webkit-box;display:-ms-flexbox;display:flex;">
+                                    <section
+                                        style="font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                                        A：</section>
+                                    <section style="-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                                        为加大对原创作者扶持力度，为公众平台发展注入更多活力，我们推出了“开放转载”功能，希望可以降低转载者与原创者的沟通成本，增加原创作者的收益，鼓励更多优质原创内容的产生。
+                                    </section>
+                                </section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+
+                <div class="section_title">互动话题</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#topic">复制</button>
+                    <div id="topic" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin:48px 8px;text-align: center;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                            <section style="display: inline-block;">
+                                <section
+                                    style="display:inline-block;background: #8CE97F;border-radius: 6px;padding: 8px 12px;font-size: 17px;color: rgba(0,0,0,0.9);">
+                                    互动</section>
+                                <section
+                                    style="display:inline-block;background: rgba(0,0,0,0.10);border-radius: 6px;padding: 8px 12px;margin-left: -18px;margin-top: 30px;vertical-align: top;font-size: 17px;color: rgba(0,0,0,0.9);">
+                                    话题</section>
+                            </section>
+                            <section style="margin-top: 24px;font-size: 19px;">“假如有一笔小零钱，你打算怎么花？”</section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">人物引言(有头像)</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#quote_avatar">复制</button>
+                    <div id="quote_avatar" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">
+                            <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        </section>
+                        <section
+                            style="margin:48px 8px;padding: 16px 0;border-top:1px solid rgba(0, 0, 0, 0.2);border-bottom:1px solid rgba(0, 0, 0, 0.2);">
+                            <img style="width: 48px;height:48px!important;border-radius:4px; float: left;margin-right: 12px;object-fit: cover;"
+                                src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
+                            <section
+                                style="font-size: 17px; letter-spacing: 0;overflow: hidden;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                                <section
+                                    style="line-height: 23.2px;font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;">
+                                    大饼</section>
+                                <section style="color: rgba(0, 0, 0, 0.5);">所有内容出发点都不是为了让这个世界更坏，只是觉得让大家可以好一点点。</section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">二维码</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#qrcode">复制</button>
+                    <div id="qrcode" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section style="margin:96px 0;">
+                            <img style="width: 160px;display: block;margin: 0 auto;"
+                                src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/qrcode.png" />
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">参考文献</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#references">复制</button>
+                    <div id="references" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section style="margin:48px 8px;">
+                            <section
+                                style="font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;display:-webkit-box;display:-ms-flexbox;display:flex;; -webkit-box-align: center;-ms-flex-align: center;align-items: center;">
+                                <svg style="display: block" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path
+                                            d="M8.2 3.2v14.61H18a.8.8 0 0 0 .8-.8V4a.8.8 0 0 0-.8-.8H8.2zM7 3.2H5.2v14.61H7V3.2zm11.8 15.643a1.993 1.993 0 0 1-.8.166H5.2V20.8H18a.8.8 0 0 0 .8-.8v-1.157zM4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4V2z"
+                                            fill="#000" fill-opacity=".5" />
+                                    </g>
+                                </svg>
+                                <section
+                                    style="font-size: 17px;line-height: 24px; color: rgba(0, 0, 0, 0.5);margin-left: 8px;">
+                                    参考文献</section>
+                            </section>
+                            <section
+                                style="color:rgba(0, 0, 0, 0.5);font-size: 15px;line-height: 28px;margin-top:16px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                                <section>《亲述丨一个国产手机品牌之死 》</section>
+                                <section>《美图做手机的第六年：是说再见的时候了》</section>
+                                <section>《中国手机往事》</section>
+                                <section>《亲述丨一个国产手机品牌之死 》</section>
+                                <section>《美图做手机的第六年：是说再见的时候了》</section>
+                                <section>《中国手机往事》</section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">推荐阅读</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#recommended">复制</button>
+                    <div id="recommended" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section style="margin:48px 8px;">
+                            <section
+                                style="display:-webkit-box;display:-ms-flexbox;display:flex;; -webkit-box-align: center;-ms-flex-align: center;align-items: center;">
+                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill="none" fill-rule="evenodd">
+                                        <path
+                                            d="M4 3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3zm1.2.2v17.6h13.6V3.2H5.2zM8.5 8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM7 10h7.5v1.2H7V10zm0 3h4v1.2H7V13zm0 3h4v1.2H7V16z"
+                                            fill="#000" fill-opacity=".5" />
+                                    </g>
+                                </svg>
+                                <section
+                                    style="font-family: PingFangSC-Medium,NotoSansSC-Medium,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:500;font-size: 17px;line-height: 24px; color: rgba(0, 0, 0, 0.5);margin-left: 8px;">
+                                    推荐阅读</section>
+                            </section>
+                            <section
+                                style="color:#576B95 ;font-size: 15px;line-height: 28px;margin-top:16px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                                <section>《亲述丨一个国产手机品牌之死 》</section>
+                                <section>《美图做手机的第六年：是说再见的时候了》</section>
+                                <section>《中国手机往事》</section>
+                                <section>《亲述丨一个国产手机品牌之死 》</section>
+                                <section>《美图做手机的第六年：是说再见的时候了》</section>
+                                <section>《中国手机往事》</section>
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">分割线</div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#line_1">复制</button>
+                    <div id="line_1" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="display:-webkit-box;display:-ms-flexbox;display:flex;;-webkit-box-align: center;-ms-flex-align: center;align-items: center;margin: 48px 8px;">
+                            <section
+                                style="border-top:1px solid rgba(0, 0, 0, 0.2);-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                            </section>
+                            <section>
+                                <svg style="display: block;margin:0 10px;" width="26" height="20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g stroke="#000" stroke-width="1.2" fill="none" fill-rule="evenodd"
+                                        stroke-opacity=".2">
+                                        <ellipse cx="9.722" cy="7.778" rx="9.122" ry="7.178" />
+                                        <ellipse cx="17.222" cy="13.333" rx="7.733" ry="6.067" />
+                                    </g>
+                                </svg>
+                            </section>
+                            <section
+                                style="border-top:1px solid rgba(0, 0, 0, 0.2);-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#line_2">复制</button>
+                    <div id="line_2" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="display:-webkit-box;display:-ms-flexbox;display:flex;;-webkit-box-align: center;-ms-flex-align: center;align-items: center;margin: 48px 8px;">
+                            <section
+                                style="border-top:1px solid rgba(0, 0, 0, 0.2);-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                            </section>
+                            <section>
+                                <svg style="display: block;margin:0 10px;" width="20" height="19"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M6.667 15.268l.44.127A10.4 10.4 0 0 0 10 15.8c4.9 0 8.8-3.315 8.8-7.3S14.9 1.2 10 1.2 1.2 4.515 1.2 8.5c0 2.076 1.057 4.026 2.9 5.411l.551.414-.235 2.022 2.251-1.08zM10 17c-1.129 0-2.214-.159-3.227-.452l-2.982 1.43a.5.5 0 0 1-.713-.508l.302-2.6C1.307 13.314 0 11.037 0 8.5 0 3.806 4.477 0 10 0s10 3.806 10 8.5S15.523 17 10 17z"
+                                        fill="#000" fill-rule="evenodd" fill-opacity=".2" /></svg>
+                            </section>
+                            <section
+                                style="border-top:1px solid rgba(0, 0, 0, 0.2);-webkit-box-flex:1;-ms-flex:1;flex:1;">
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">列表</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#list_1">复制</button>
+                    <div id="list_1" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin-left:8px;margin-right:8px;color:rgba(0, 0, 0, 0.9);line-height: 30px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section>1. 输入红包密码</section>
+                            <section>2. 须填写个人信息的红包</section>
+                            <section>3. AA红包</section>
+                            <section>4. 与好友共抢的红包</section>
+                            <section>5. 需要转发的红包</section>
+                            <section>6. 钓鱼链接红包</section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#list_2">复制</button>
+                    <div id="list_2" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin-left:8px;margin-right:8px;color:rgba(0, 0, 0, 0.9);line-height: 30px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section>・ 输入红包密码</section>
+                            <section>・ 须填写个人信息的红包</section>
+                            <section>・ AA红包</section>
+                            <section>・ 与好友共抢的红包</section>
+                            <section>・ 需要转发的红包</section>
+                            <section>・ 钓鱼链接红包</section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#list_3">复制</button>
+                    <div id="list_3" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section
+                            style="margin-left:8px;margin-right:8px;color:rgba(0, 0, 0, 0.9);line-height: 30px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                            <section>○ 输入红包密码</section>
+                            <section>○ 须填写个人信息的红包</section>
+                            <section>○ AA红包</section>
+                            <section>○ 与好友共抢的红包</section>
+                            <section>○ 需要转发的红包</section>
+                            <section>○ 钓鱼链接红包</section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+
+                <div class="section_title">图注</div>
+                <div class="section">
+                    <button class="section_btn_copy" data-clipboard-target="#imgdesc">复制</button>
+                    <div id="imgdesc" class="section_box" contenteditable1="">
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                        <section style="margin:16px 8px;">
+                            <img style="display: block;margin-bottom:8px;"
+                                src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
+                            <section
+                                style="color: rgba(0, 0, 0, 0.5);font-size: 15px;font-family: PingFangSC-Light,NotoSansSC-Light,-apple-system-font,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Hiragino Sans GB','Microsoft YaHei UI','Microsoft YaHei',Arial,sans-serif;font-weight:300;">
+                                △“大人别出声”《想放弃的那个夜晚》片段
+                            </section>
+                        </section>
+                        <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_bd">
+            <div id="editor" class="editor" contenteditable="true"></div>
+        </div>
+    </div>    
+    <div id="tips" class="tips">复制成功</div>
+
+    <script src="./clipboard.min.js"></script>
+    <script>
+    var clipboard = new ClipboardJS('.section_btn_copy');
+    clipboard.on('success', function(e) {
+        var tipsEl = document.getElementById('tips');
+        tipsEl.className = 'tips show';
+        setTimeout(function(){
+            tipsEl.className = 'tips';
+        },1200)
+    });
+
+    var editorEl = document.getElementById('editor')
+    document.querySelectorAll('.section_box').forEach(function(item){
+        item.onclick = function(){
+            editorEl.innerHTML += item.innerHTML.replace(/<section style="font-size:0;padding:0;margin:0;">&nbsp;<\/section>/g,'');
+        }
+    })
+    </script>
+</body>
+
+</html>
