@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>微信派图文模板</title>
     <style>
         * {
             padding: 0;
@@ -40,6 +40,7 @@
             bottom: 0;
             padding: 20px;
             width: 400px;
+            max-width: 100%;
             overflow: scroll;
             box-sizing: border-box;
             background: #fafafa;
@@ -122,6 +123,12 @@
 
         .tools .btn {
             position: static;
+        }
+
+        @media screen and (max-width : 600px){
+            .main{
+                display: none;
+            }
         }
     </style>
 </head>
