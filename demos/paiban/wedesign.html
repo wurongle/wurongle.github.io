@@ -10,7 +10,11 @@
         * {
             padding: 0;
             margin: 0;
-            font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            /* font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif; */
         }
 
         .main {
@@ -69,6 +73,14 @@
             border: 1px solid #ccc;
             background: #eee;
             cursor: pointer;
+        }
+
+        .section_row {
+            display: flex;
+        }
+
+        .section_row .section {
+            flex: 1;
         }
 
         .btn {
@@ -139,7 +151,68 @@
 <body>
     <div class="section_list">
         <div class="section_title">顶部栏目名称样式</div>
-        <div class="section">
+        <div class="section_row">
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#h0_4">复制</button>
+                <div id="h0_4" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="text-align:center;margin:36px 8px;">
+                        <img style="width:62px;;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/cf2a2e3c-84a2-48c1-b8d5-70dd2586cf0d/class.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#h0_1">复制</button>
+                <div id="h0_1" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="text-align:center;margin:36px 8px;">
+                        <img style="width:56px;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/f3f6ceca-3a32-4b3b-a830-dc134c436bb8/tour.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#h0_3">复制</button>
+                <div id="h0_3" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="text-align:center;margin:36px 8px;">
+                        <img style="width:63px;;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/cf2a2e3c-84a2-48c1-b8d5-70dd2586cf0d/news.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+        </div>
+        <div class="section_row">
+
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#h0_2">复制</button>
+                <div id="h0_2" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="text-align:center;margin:36px 8px;">
+                        <img style="width:96px;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/cf2a2e3c-84a2-48c1-b8d5-70dd2586cf0d/collection.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#h0_5">复制</button>
+                <div id="h0_5" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="text-align:center;margin:36px 8px;">
+                        <img style="width:79px;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/cf2a2e3c-84a2-48c1-b8d5-70dd2586cf0d/sharing.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="section">
             <button class="btn section_btn_copy" data-clipboard-target="#h0_1">复制</button>
             <div id="h0_1" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
@@ -158,11 +231,12 @@
                 <section style="text-align:center;margin:36px 8px;">
                     <section style="display:inline-block;background: rgba(0,0,0,0.9);color:#fff;
                         padding: 2px 10px;
-                        border-radius: 0 10px 10px;font-size: 17px;line-height: 23px;font-weight: lighter;">自定义</section>
+                        border-radius: 0 10px 10px;font-size: 17px;line-height: 23px;font-weight: lighter;">自定义
+                    </section>
                 </section>
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
             </div>
-        </div>
+        </div> -->
 
         <div class="section_title">一级标题</div>
         <div class="section">
@@ -170,11 +244,10 @@
             <div id="h1_1" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
                 <section style="text-align:center;margin:56px 8px 24px;">
-                    <section><strong
-                            style="display:inline-block;font-size: 20px;line-height: 30px;">从废墟到美术馆</strong>
+                    <section><strong style="display:inline-block;font-size: 20px;line-height: 30px;">从废墟到美术馆</strong>
                     </section>
-                    <section style="width:40px;overflow: hidden; border-radius: 0 15px 15px;margin: 24px auto 0;">
-                        <img style="width: 100%;display: block;"
+                    <section style="width:40px;overflow: hidden; border-radius: 0 20px 20px;margin: 24px auto 0;">
+                        <img style="width: 40px;display: block;height: 50px!important;object-fit: cover;"
                             src="https://res.wx.qq.com/a/fed_upload/7de78a28-9585-4b46-aab7-996f8badb8fb/avatar.png" />
                     </section>
                     <section><strong style="font-size: 17px;line-height: 27px;">Mumu</strong></section>
@@ -198,8 +271,7 @@
                             color: #fff;
                             line-height: 32px;">1</section>
                     </section>
-                    <section><strong
-                            style="display:inline-block;font-size: 20px;line-height: 30px;">造型、功能、感觉</strong>
+                    <section><strong style="display:inline-block;font-size: 20px;line-height: 30px;">造型、功能、感觉</strong>
                     </section>
                 </section>
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
@@ -212,7 +284,7 @@
             <div id="h2_1" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
 
-                <section style="margin:24px 8px 8px;color: rgba(0,0,0,0.9);font-size: 17px;line-height: 27px;">
+                <section style="margin:24px 8px 8px;opacity: 0.9; font-size: 17px;line-height: 27px;">
                     <strong>1、福武总一郎与濑户内海艺术祭</strong></section>
 
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
@@ -224,8 +296,7 @@
             <div id="h3_1" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
                 <section style="margin:16px 8px 8px;">
-                    <strong
-                        style="display:inline-block;background: rgba(0,0,0,0.05);
+                    <strong style="display:inline-block;background: rgba(0,0,0,0.05);
                             padding: 2px 10px;
                             border-radius: 0 10px 10px;font-size: 17px;line-height: 23px;">明治時代的工业遗迹</strong>
                 </section>
@@ -251,6 +322,69 @@
             </div>
         </div>
 
+        <div class="section_title">图片</div>
+        <div class="section_row">
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#pic_1">复制</button>
+                <div id="pic_1" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="margin:8px;">
+                        <img style="display: block;"
+                            src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#pic_2">复制</button>
+                <div id="pic_2" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="margin:24px 8px 8px">
+                        <img style="display: block;"
+                            src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#pic_3">复制</button>
+                <div id="pic_3" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="margin:8px 8px 24px">
+                        <img style="display: block;"
+                            src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#pic_4">复制</button>
+                <div id="pic_4" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="margin:24px 8px;">
+                        <img style="display: block;"
+                            src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+        </div>
+        <div class="section_title">图注</div>
+        <div class="section">
+            <button class="btn section_btn_copy" data-clipboard-target="#imgdesc">复制</button>
+            <div id="imgdesc" class="section_box" contenteditable1="">
+                <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                <section style="margin:8px;">
+                    <section style="color: rgba(0, 0, 0, 0.5);font-size: 14px;font-weight:lighter;">
+                        ▲“大人别出声”《想放弃的那个夜晚》片段
+                    </section>
+                </section>
+                <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+            </div>
+        </div>
+
         <div class="section_title">引用</div>
 
         <div class="section">
@@ -258,8 +392,9 @@
             <div id="quote_3" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
                 <section style="margin:24px 8px;">
-                    <section style="background: rgba(0,0,0,0.05);
-                            border-radius: 0 25px 25px 25px;padding: 16px 24px;text-align: justify; font-weight: lighter;">
+                    <section
+                        style="background: rgba(0,0,0,0.05);
+                            border-radius: 0 25px 25px 25px;padding: 16px 24px;text-align: justify; font-weight: lighter; font-size: 15px;">
                         <section>
                             <strong>如何在产品功能上做更多的创新来体现设计价值一直是设计师关注的话题，尤其是在体系成熟的产品里，如何对完善的基本框架和功能进行突破、如何挖掘用户的互动诉求，对于设计师来讲都是很大的挑战。</strong>
                         </section>
@@ -283,7 +418,8 @@
             <div id="quote_1" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
                 <section style="margin:48px 44px;">
-                    <section style="opacity: 0.5;font-size: 16px;color: #000000;text-align: justify;font-weight:lighter;">
+                    <section
+                        style="opacity: 0.5;font-size: 17px;color: #000000;text-align: justify;font-weight:lighter;">
                         每个读者只能读到已然存在于他内心的东西。书籍只不过是一种光学仪器，帮助读者发现自己的内容。</section>
                     <section
                         style="opacity: 0.5;font-size: 16px;color: #000000;text-align: justify;font-weight:lighter;text-align:right;margin-top:20px;">
@@ -298,7 +434,8 @@
             <div id="quote_2" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
                 <section style="margin:48px 44px;">
-                    <section style="font-weight:lighter;opacity: 0.5;font-size: 16px;color: #000000;text-align: justify;">
+                    <section
+                        style="font-weight:lighter;opacity: 0.5;font-size: 17px;color: #000000;text-align: justify;">
                         “想放弃的夜晚，看到你的文章，于是我看到了今天的太阳。”Nina留言。</section>
                 </section>
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
@@ -353,7 +490,7 @@
                 <section style="margin:48px 8px 40px;">
                     <section style="font-size: 15px;line-height: 22px; ">
                         <strong>往期推荐：</strong></section>
-                        <section style="margin-top:15px;font-size: 15px;line-height: 35px;color: #576B95;">
+                    <section style="margin-top:15px;font-size: 15px;line-height: 35px;color: #576B95;">
                         <section>
                             《亲述丨一个国产手机品牌之死 》</section>
                         <section>
@@ -377,29 +514,17 @@
             <button class="btn section_btn_copy" data-clipboard-target="#comment">复制</button>
             <div id="comment" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
-                <section style="margin:48px 8px;font-weight: lighter; font-size: 15px;">
+                <section style="margin:48px 8px;font-weight: lighter; font-size: 15px;line-height: 1.4;">
                     <section><strong>注释：</strong></section>
                     <section><br /></section>
-                    <section><strong>①
-                            白色部义昭：</strong>1974年出生于日本千叶县。东京艺术大学大学院修士课程毕业。日本设计中心色部设计室主任。主要从事VI、营销、书籍设计、产品包装、展览会</section>
+                    <section><span style="font-size: 18px;">➊</span>
+                        <strong>白色部义昭：</strong>1974年出生于日本千叶县。东京艺术大学大学院修士课程毕业。日本设计中心色部设计室主任。主要从事VI、营销、书籍设计、产品包装、展览会
+                    </section>
                     <section><br /></section>
-                    <section><strong>② 基础设计学科：</strong>以领域横断、诉求本质、与基于社会、文化、心里的文脉视点为特征的创造性设计教育研究学科。</section>
-                </section>
-                <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
-            </div>
-        </div>
-        <div class="section_title">图注</div>
-        <div class="section">
-            <button class="btn section_btn_copy" data-clipboard-target="#imgdesc">复制</button>
-            <div id="imgdesc" class="section_box" contenteditable1="">
-                <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
-                <section style="margin:24px 8px;">
-                    <section style="margin: 8px 0;"><img style="display: block;"
-                            src="https://res.wx.qq.com/a/fed_upload/ba4f2053-58fd-4e9c-8a70-cb03350392f8/wx.jpg" />
-                    </section>
-                    <section style="color: rgba(0, 0, 0, 0.5);font-size: 15px;font-weight:lighter;">
-                        ▲“大人别出声”《想放弃的那个夜晚》片段
-                    </section>
+                    <section><span style="font-size: 18px;">➋</span>
+                        <strong>基础设计学科：</strong>以领域横断、诉求本质、与基于社会、文化、心里的文脉视点为特征的创造性设计教育研究学科。</section>
+                    <section><br /></section>
+                    <section><span style="font-size: 18px;">➌</span> <strong>乌尔姆：</strong>即乌尔姆造型学院，是德国知名设计大学。</section>
                 </section>
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
             </div>
@@ -430,8 +555,9 @@
                     <section
                         style="background: rgba(0,0,0,0.05);
                                     border-radius: 0 25px 25px 25px;padding: 24px 16px; font-size:15px;text-align: justify;color: rgba(0, 0, 0, 0.5);">
-                        <section>本文仅代表作者观点</section>
-                        <section>如需转载，请注明来自WeDesign</section>
+                        <section>本文译自苹果官方人机界面指南iOSHuman Interface Guidelines
+                            (2015年10月21日)，经由微信团队设计师曹粟翻译整理，该译文并非完整原文，内容已做删减，并加入了部分译者观点。如在阅读过程中发现错误与疏漏之处，欢迎不吝指出。如需转载，请注明来自WeDesign。
+                        </section>
                     </section>
                 </section>
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
@@ -439,16 +565,43 @@
         </div>
 
         <div class="section_title">结尾标记</div>
-        <div class="section">
+        <div class="section_row">
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#end">复制</button>
+                <div id="end" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="margin:48px 8px; text-align: center;">
+                        <img style="width: 110px;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/281eb785-970d-4a44-a9cb-2ba3ec63ed0e/end.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+            <div class="section">
+                <button class="btn section_btn_copy" data-clipboard-target="#end_2">复制</button>
+                <div id="end_2" class="section_box" contenteditable1="">
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                    <section style="margin:48px 8px 0; text-align: center;">
+                        <img style="width: 110px;vertical-align: middle;"
+                            src="https://res.wx.qq.com/a/fed_upload/281eb785-970d-4a44-a9cb-2ba3ec63ed0e/end.png" />
+                    </section>
+                    <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="section">
             <button class="btn section_btn_copy" data-clipboard-target="#end">复制</button>
             <div id="end" class="section_box" contenteditable1="">
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
                 <section style="margin:24px 8px;">
-                        <section style="text-align: center;"><strong><section style="display: inline;margin-right: 10px;">—</section>The End<section style="display: inline;margin-left: 10px;">—</section></strong></section>
+                    <section style="text-align: center;"><strong>
+                            <section style="display: inline;margin-right: 10px;">—</section>The End<section
+                                style="display: inline;margin-left: 10px;">—</section>
+                        </strong></section>
                 </section>
                 <section style="font-size:0;padding:0;margin:0;">&nbsp;</section>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="main">
         <div class="editor_wrap">
