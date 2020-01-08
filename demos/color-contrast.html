@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>color-contrast</title>
+    <link
+      rel="stylesheet"
+      href="https://res.wx.qq.com/open/libs/weui/2.1.3/weui.min.css"
+    />
+    <style>
+      body {
+        background-color: #232323;
+      }
+      .i {
+        display: inline-block;
+        font-size: 12px;
+        width: 60px;
+        margin: 5px 5px 0 0;
+        padding: 2px 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="position: fixed;align-items: center; display:flex; width: 100%; top:0; background: rgba(255,255,255,0.6); font-size: 14px;"
+    >
+      <div>感知亮度阈值：<span id="offset"></span></div>
+      <div class="weui-slider-box" style="width: 60%;">
+        <div id="slider" class="weui-slider">
+          <div class="weui-slider__inner">
+            <div class="weui-slider__track"></div>
+            <div class="weui-slider__handler"></div>
+          </div>
+        </div>
+        <div id="sliderValue" class="weui-slider-box__value"></div>
+      </div>
+    </div>
+
+    <div id="page"></div>
+    <script
+      type="text/javascript"
+      src="https://res.wx.qq.com/open/libs/weuijs/1.2.1/weui.min.js"
+    ></script>
+    <script>
+      var timer;
+      var offsetEl = document.getElementById("offset");
+      weui.slider("#slider", {
+        step: 1,
+        defaultValue: 0,
+        onChange: function(percent) {
+          console.log(percent);
+          offsetEl.innerHTML = Number(percent * 2.5).toFixed(0);
+          timer && clearTimeout(timer);
+          timer = setTimeout(() => {
+            Array.from(document.querySelectorAll(".i")).forEach(el => {
+              brightness = +el.getAttribute("data-brightness");
+              var bc = el.getAttribute("data-bc");
+              if (brightness < percent * 2.5) {
+                el.style.borderColor = "rgb(255,0,0)";
+              } else {
+                el.style.borderColor = bc;
+              }
+            });
+          }, 1000);
+        }
+      });
+      var colors = [];
+      var step = 10;
+      var brightness = 0;
+      for (var r = 0; r < 256; ) {
+        for (var g = 0; g < 256; ) {
+          for (var b = 0; b < 256; ) {
+            brightness = (r * 299 + g * 587 + b * 114) / 1000;
+            colors.push(
+              `<div class="i" data-brightness="${brightness}" data-bc="rgb(${r},${g},${b})" style="color:rgb(${r},${g},${b});border:1px solid rgb(${r},${g},${b});">${r},${g},${b}<br>B: ${brightness}</div>`
+            );
+            b += step;
+          }
+          g += step;
+        }
+        r += step;
+      }
+      document.getElementById("page").innerHTML = colors.join("");
+    </script>
+  </body>
+</html>
