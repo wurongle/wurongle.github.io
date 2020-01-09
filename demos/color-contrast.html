@@ -11,7 +11,7 @@
     <style>
         body {
             background-color: #232323;
-            width:1750px;
+            width:1650px;
             overflow: scroll;
             padding-top: 50px;
         }
@@ -19,11 +19,12 @@
         .i {
             display: inline-block;
             font-size: 12px;
-            width: 70px;
+            width: 65px;
             margin: 5px 5px 0 0;
             padding: 2px 2px;
             outline: 1px solid transparent;
             outline-offset: 1px;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -31,8 +32,8 @@
 <body>
     <div
         style="padding:10px;box-sizing:border-box;position: fixed;align-items: center; display:flex; width: 100%; top:0; background: rgba(255,255,255,0.6); font-size: 14px;">
-        <div style="flex:1">感知亮度差值临界值：<span id="offset"></span></div>
-        <div class="weui-slider-box" style="width: 70%;">
+        <div style="width: 50%;">感知亮度差值临界值：<span id="offset"></span></div>
+        <div class="weui-slider-box" style="width: 50%;">
             <div id="slider" class="weui-slider">
                 <div class="weui-slider__inner">
                     <div class="weui-slider__track"></div>
@@ -2170,7 +2171,7 @@
                             <p style="color:rgb(${r},${g},${b});">${r},${g},${b}<br>\
                             ${h},${s},${l}</p>\
                             最终效果<br>\
-                            <p style="color:#fff">B:${Math.abs(brightness-35)} D:${cdiff}</p>\
+                            <p style="color:#fff">B:${Math.abs(brightness-35)}_D:${cdiff}</p>\
                         </div>`
                     );
                     l += stepL;
