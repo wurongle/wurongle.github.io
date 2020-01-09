@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +11,19 @@
     <style>
         body {
             background-color: #232323;
+            width:1600px;
+            overflow: scroll;
+            padding-top: 50px;
         }
 
         .i {
             display: inline-block;
             font-size: 12px;
-            width: 60px;
+            width: 70px;
             margin: 5px 5px 0 0;
             padding: 2px 4px;
+            outline: 1px solid transparent;
+            outline-offset: 1px;
         }
     </style>
 </head>
@@ -25,8 +31,8 @@
 <body>
     <div
         style="padding:10px;box-sizing:border-box;position: fixed;align-items: center; display:flex; width: 100%; top:0; background: rgba(255,255,255,0.6); font-size: 14px;">
-        <div>感知亮度差值临界值：<span id="offset"></span></div>
-        <div class="weui-slider-box" style="width: 60%;">
+        <div style="flex:1">感知亮度差值临界值：<span id="offset"></span></div>
+        <div class="weui-slider-box" style="width: 70%;">
             <div id="slider" class="weui-slider">
                 <div class="weui-slider__inner">
                     <div class="weui-slider__track"></div>
@@ -2100,15 +2106,23 @@
             defaultValue: 0,
             onChange: function (percent) {
                 console.log(percent);
-                offsetEl.innerHTML = Number(percent * 2.5).toFixed(0);
+                const limitBrightness = percent * 2.5
+                offsetEl.innerHTML = Number(limitBrightness).toFixed(0);
                 timer && clearTimeout(timer);
                 timer = setTimeout(() => {
                     Array.from(document.querySelectorAll(".i")).forEach(el => {
-                        brightness = +el.getAttribute("data-brightness");
+                        brightness = Math.abs(+el.getAttribute("data-brightness") - 35);
                         var bc = el.getAttribute("data-bc");
-                        if (brightness < percent * 2.5) {
-                            el.style.borderColor = "rgb(255,0,0)";
+                        var rgb = Color(bc).rgb().array();
+                        if (brightness < limitBrightness) {
+                            const ratio = ((limitBrightness + 35) * 1000) / (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114);
+                            const newColor = Color.rgb(rgb[0] * ratio, rgb[1] * ratio, rgb[2] * ratio);
+                            el.style.borderLeftColor = newColor.rgb();
+                            el.style.color = newColor.rgb();
+                            el.style.borderBottomColor = "red";
                         } else {
+                            //el.style.borderColor = bc;
+                            el.style.color = bc;
                             el.style.borderColor = bc;
                         }
                     });
@@ -2117,7 +2131,7 @@
         });
         var colors = [];
         var stepH = 5;
-        var stepS = 5;
+        var stepS = 10;
         var stepL = 5; 
         var brightness = 0;
         // for (var r = 0; r < 256;) {
@@ -2134,6 +2148,7 @@
         //     r += step;
         // }
         for (var h = 0; h <= 360;) {
+            colors.push(`<div style="font-weight:bold;margin:15px 0 10px;background:#fff;">色相H:${h}</div>`)
             for (var s = 0; s <= 100;) {
                 for (var l = 0; l <= 100;) {
                     var color = Color.hsl([h,s,l]);
@@ -2147,11 +2162,16 @@
                     var bBg = 35;
 
                     //console.log(r,g,b)
-                    brightness = Math.abs(+Number((r * 299 + g * 587 + b * 114) / 1000).toFixed(0) - 35);
+                    brightness = Math.abs(+Number((r * 299 + g * 587 + b * 114) / 1000).toFixed(0));
                     cdiff = (Math.max (rBg, r) - Math.min (rBg, r)) + (Math.max (gBg, g) - Math.min (gBg, g)) + (Math.max (bBg, b) - Math.min (bBg, b));
 
                     colors.push(
-                        `<div class="i" data-brightness="${brightness}" data-cdiff="${cdiff}" data-bc="rgb(${r},${g},${b})" style="color:rgb(${r},${g},${b});border:1px solid rgb(${r},${g},${b});">${r},${g},${b}<br>cdiff: ${cdiff}<br><p style="color:#fff">B: ${brightness}</p></div>`
+                        `<div class="i" data-brightness="${brightness}" data-cdiff="${cdiff}" data-bc="rgb(${r},${g},${b})" style="color:rgb(${r},${g},${b});border:1px solid rgb(${r},${g},${b});">\
+                            <p style="color:rgb(${r},${g},${b});">${r},${g},${b}<br>\
+                            ${h},${s},${l}</p>\
+                            最终效果<br>\
+                            <p style="color:#fff">B:${Math.abs(brightness-35)} D:${cdiff}</p>\
+                        </div>`
                     );
                     l += stepL;
                 }
