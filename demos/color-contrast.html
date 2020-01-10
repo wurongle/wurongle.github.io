@@ -98,7 +98,7 @@
                             } else if (newR == 255 || newB == 255) {
                                 newG = ((limitBrightness + 35) * 1000 - newR * 299 - newB * 114) / 587;
                             } else if (newG == 255) {
-                                newR = ((limitBrightness + 35) * 1000 - newG * 587 - newB * 114) / 299;
+                                newB = ((limitBrightness + 35) * 1000 - newR * 299 - newG * 587) / 114;
                             }
 
                             const newColor = Color.rgb(newR, newG, newB);
