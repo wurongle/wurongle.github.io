@@ -8,9 +8,11 @@
     <title>color-contrast</title>
     <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.1.3/weui.min.css" />
     <style>
-        html,body{
+        html,
+        body {
             height: 100%;
         }
+
         body {
             background-color: #232323;
             overflow: scroll;
@@ -25,6 +27,10 @@
             outline: 1px solid transparent;
             outline-offset: 1px;
             white-space: nowrap;
+        }
+        .h{
+            /* position:sticky;
+            top:120px; */
         }
     </style>
 </head>
@@ -57,7 +63,6 @@
             step: 1,
             defaultValue: 0,
             onChange: function (percent) {
-                console.log(percent);
                 const limitBrightness = percent * 2.5
                 offsetEl.innerHTML = Number(limitBrightness).toFixed(0);
                 timer && clearTimeout(timer);
@@ -69,16 +74,32 @@
                         var bc = el.getAttribute("data-bc");
                         var rgb = Color(bc).rgb().array();
                         var hsl = Color(bc).hsl().array();
-                        
-                        if (hsl[1]==0 && hsl[2] < 40){ // 黑白灰颜色处理
+
+                        if (hsl[1] == 0 && hsl[2] < 40) { // 黑白灰颜色处理
                             hsl[2] = 100 - hsl[2];
                             const newColor = Color.hsl(...hsl);
                             el.style.borderLeftColor = newColor.rgb();
                             el.style.color = newColor.rgb();
                             el.style.borderBottomColor = "red";
-                        }else if (brightness < limitBrightness) { // 其他色相样式处理
+                        } else if (brightness < limitBrightness) { // 其他色相样式处理
                             const ratio = ((limitBrightness + 35) * 1000) / (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114);
-                            const newColor = Color.rgb(rgb[0] * ratio, rgb[1] * ratio, rgb[2] * ratio);
+                            var newR = Math.min(255, rgb[0] * ratio);
+                            var newG = Math.min(255, rgb[1] * ratio);
+                            var newB = Math.min(255, rgb[2] * ratio);
+
+                            if (newG == 0) {
+                                newG = ((limitBrightness + 35) * 1000 - newR * 299 - newB * 114) / 587;
+                            } else if (newR == 0) {
+                                newR = ((limitBrightness + 35) * 1000 - newG * 587 - newB * 114) / 299;
+                            } else if (newB == 0) {
+                                newB = ((limitBrightness + 35) * 1000 - newR * 299 - newG * 587) / 114;
+                            } else if (newR == 255 || newB == 255) {
+                                newG = ((limitBrightness + 35) * 1000 - newR * 299 - newB * 114) / 587;
+                            } else if (newG == 255) {
+                                newR = ((limitBrightness + 35) * 1000 - newG * 587 - newB * 114) / 299;
+                            }
+
+                            const newColor = Color.rgb(newR, newG, newB);
 
                             const newHsl = newColor.hsl().array();
                             el.style.borderBottomColor = "red";
@@ -86,7 +107,7 @@
                             el.style.borderLeftColor = newColor.rgb();
                             el1.style.color = newColor.rgb();
 
-                            el.style.borderRightColor = Color.hsl([hsl[0],newHsl[1],newHsl[2]]).rgb();
+                            el.style.borderRightColor = Color.hsl([hsl[0], newHsl[1], newHsl[2]]).rgb();
                             //el2.style.color = Color.hsl([hsl[0],newHsl[1],newHsl[2]]).rgb();
                         } else {
                             //el.style.borderColor = bc;
@@ -102,7 +123,7 @@
         var colors = [];
         var stepH = 5;
         var stepS = 10;
-        var stepL = 5; 
+        var stepL = 5;
         var brightness = 0;
         // for (var r = 0; r < 256;) {
         //     for (var g = 0; g < 256;) {
@@ -121,8 +142,8 @@
             colors.push(`<div style="font-weight:bold;margin:15px 0 10px;background:#fff;">色相H:${h}</div>`)
             for (var s = 0; s <= 100;) {
                 for (var l = 0; l <= 100;) {
-                    var color = Color.hsl([h,s,l]);
-                    var rgb= color.rgb().array();
+                    var color = Color.hsl([h, s, l]);
+                    var rgb = color.rgb().array();
                     var r = rgb[0].toFixed(0);
                     var g = rgb[1].toFixed(0);
                     var b = rgb[2].toFixed(0);
@@ -133,13 +154,13 @@
 
                     //console.log(r,g,b)
                     brightness = Math.abs(+Number((r * 299 + g * 587 + b * 114) / 1000).toFixed(0));
-                    cdiff = (Math.max (rBg, r) - Math.min (rBg, r)) + (Math.max (gBg, g) - Math.min (gBg, g)) + (Math.max (bBg, b) - Math.min (bBg, b));
+                    cdiff = (Math.max(rBg, r) - Math.min(rBg, r)) + (Math.max(gBg, g) - Math.min(gBg, g)) + (Math.max(bBg, b) - Math.min(bBg, b));
 
                     colors.push(
                         `<div class="i" data-brightness="${brightness}" data-cdiff="${cdiff}" data-bc="rgb(${r},${g},${b})" style="color:rgb(${r},${g},${b});border:1px solid rgb(${r},${g},${b});">\
-                            <p style="color:rgb(${r},${g},${b});">原效果<br>${r},${g},${b}<br>${h},${s},${l}</p>\
+                            <p style="color:rgb(${r},${g},${b});">原始效果<br>${r},${g},${b}<br>${h},${s},${l}</p>\
                             <p class="i1">调整效果</p><!--<p class="i2">调整效果2</p>-->\
-                            <p style="color:#fff">B:${Math.abs(brightness-35)}_D:${cdiff}</p>\
+                            <p class="h" style="color:#fff">B:${Math.abs(brightness - 35)}_D:${cdiff}</p>\
                         </div>`
                     );
                     l += stepL;
