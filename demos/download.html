@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        html,
+        body {
+            background-color: #fff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+
+            html,
+            body {
+                background-color: #191919;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://dldir1.qq.com/weixin/android/weixin7016android1700_arm64.apk" download>download</a>
+    <script>
+        //if (navigator.userAgent.indexOf("MicroMessenger") >= 0) {
+        setTimeout(function () {
+            if (navigator.userAgent.indexOf("Android") >= 0) {
+                if (/arm64/i.test(navigator.userAgent)) {
+                    location.replace('https://dldir1.qq.com/weixin/android/weixin7016android1700_arm64.apk')
+                    console.log(1)
+                } else {
+                    location.replace('https://dldir1.qq.com/weixin/android/weixin7016android1700.apk')
+                    console.log(2)
+                }
+            } else {
+                location.replace('http://itunes.apple.com/cn/app/id414478124?mt=8&ls=1')
+                console.log(3)
+            }
+        }, 0)
+
+        //}
+
+    </script>
+</body>
+
+</html>
