@@ -132,7 +132,7 @@
                     var b = rgb[2].toFixed(0);
 
                     brightness = Math.abs(+Number((r * 299 + g * 587 + b * 114) / 1000).toFixed(0));
-                    // cdiff = (Math.max(bgRgb[0], r) - Math.min(bgRgb[0], r)) + (Math.max(bgRgb[1], g) - Math.min(bgRgb[1], g)) + (Math.max(bgRgb[2], b) - Math.min(bgRgb[2], b));
+                    cdiff = (Math.max(bgRgb[0], r) - Math.min(bgRgb[0], r)) + (Math.max(bgRgb[1], g) - Math.min(bgRgb[1], g)) + (Math.max(bgRgb[2], b) - Math.min(bgRgb[2], b));
 
                     colors.push(
                         `<div class="i" data-brightness="${brightness}" data-cdiff="${cdiff}" data-bc="rgb(${r},${g},${b})" style="color:rgb(${r},${g},${b});border:1px solid rgb(${r},${g},${b});">\
